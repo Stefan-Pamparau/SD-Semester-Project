@@ -14,6 +14,8 @@ public class User {
     private String name;
     private Integer age;
     private String CNP;
+    private String email;
+    private String password;
     private UserType userType;
     private Set<Project> projects;
 }

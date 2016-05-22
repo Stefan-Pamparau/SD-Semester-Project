@@ -11,5 +11,6 @@ public class Card {
     private Integer id;
     private String title;
     private String description;
+    private CardType cardType;
     private Panel panel;
 }
