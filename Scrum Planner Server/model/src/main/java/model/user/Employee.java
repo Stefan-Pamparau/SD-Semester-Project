@@ -11,4 +11,5 @@ public class Employee extends User {
     private Integer id;
     private EmployeeType employeeType;
     private Set<Employee> subordinates;
+    private Company company;
 }
