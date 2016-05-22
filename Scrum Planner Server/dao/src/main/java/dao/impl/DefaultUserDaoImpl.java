@@ -3,6 +3,7 @@ package dao.impl;
 import org.hibernate.SessionFactory;
 
 import dao.UserDao;
+import dao.exception.DaoException;
 import model.user.User;
 
 /**
@@ -18,7 +19,7 @@ public class DefaultUserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserByEmailAndPassword(String email, String password) {
+    public User getUserByEmailAndPassword(String email, String password) throws DaoException {
         return null;
     }
 
