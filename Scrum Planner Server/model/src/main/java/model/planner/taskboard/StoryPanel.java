@@ -22,4 +22,12 @@ public class StoryPanel extends Panel {
 
     @OneToMany(mappedBy = "storyPanel", fetch = FetchType.EAGER)
     private Set<StoryCard> storyCards;
+
+    public Set<StoryCard> getStoryCards() {
+        return storyCards;
+    }
+
+    public void setStoryCards(Set<StoryCard> storyCards) {
+        this.storyCards = storyCards;
+    }
 }

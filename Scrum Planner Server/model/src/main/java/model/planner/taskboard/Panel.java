@@ -35,4 +35,28 @@ public class Panel {
 
     @ManyToOne
     private TaskBoard taskBoard;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public PanelType getPanelType() {
+        return panelType;
+    }
+
+    public void setPanelType(PanelType panelType) {
+        this.panelType = panelType;
+    }
+
+    public TaskBoard getTaskBoard() {
+        return taskBoard;
+    }
+
+    public void setTaskBoard(TaskBoard taskBoard) {
+        this.taskBoard = taskBoard;
+    }
 }

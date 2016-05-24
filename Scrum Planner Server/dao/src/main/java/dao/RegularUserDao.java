@@ -19,6 +19,15 @@ public interface RegularUserDao {
     RegularUser getRegularUser(Integer id) throws DaoException;
 
     /**
+     * Returns a regular user based on a specified CNP.
+     *
+     * @param CNP - CNP of the employee
+     * @return - the regular user with the specified id, null if the employee does not exist
+     * @throws DaoException - thrown when a Hibernate exception occurs
+     */
+    RegularUser findRegularUserByCNP(String CNP) throws DaoException;
+
+    /**
      * Inserts a regularUser into the database.
      *
      * @param regularUser - regular user to be inserted

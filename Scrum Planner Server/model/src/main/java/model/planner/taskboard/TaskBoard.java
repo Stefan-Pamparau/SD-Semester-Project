@@ -24,4 +24,20 @@ public class TaskBoard {
 
     @OneToMany(mappedBy = "taskBoard", fetch = FetchType.EAGER)
     private Set<Panel> panels;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Set<Panel> getPanels() {
+        return panels;
+    }
+
+    public void setPanels(Set<Panel> panels) {
+        this.panels = panels;
+    }
 }

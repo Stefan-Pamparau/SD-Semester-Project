@@ -17,11 +17,24 @@ import model.planner.taskboard.StoryPanel;
 @Entity
 @DiscriminatorValue("STORY_CARD")
 public class StoryCard extends Card {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private Integer storyPoints;
 
     @ManyToOne
     private StoryPanel storyPanel;
+
+    public Integer getStoryPoints() {
+        return storyPoints;
+    }
+
+    public void setStoryPoints(Integer storyPoints) {
+        this.storyPoints = storyPoints;
+    }
+
+    public StoryPanel getStoryPanel() {
+        return storyPanel;
+    }
+
+    public void setStoryPanel(StoryPanel storyPanel) {
+        this.storyPanel = storyPanel;
+    }
 }

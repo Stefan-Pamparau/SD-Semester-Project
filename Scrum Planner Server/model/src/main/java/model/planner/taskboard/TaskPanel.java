@@ -22,4 +22,12 @@ public class TaskPanel extends Panel {
 
     @OneToMany(mappedBy = "taskPanel", fetch = FetchType.EAGER)
     private Set<TaskCard> taskCards;
+
+    public Set<TaskCard> getTaskCards() {
+        return taskCards;
+    }
+
+    public void setTaskCards(Set<TaskCard> taskCards) {
+        this.taskCards = taskCards;
+    }
 }

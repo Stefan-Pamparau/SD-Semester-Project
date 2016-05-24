@@ -6,9 +6,6 @@ import java.util.Set;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,10 +18,7 @@ import model.planner.taskboard.TaskPanel;
  */
 @Entity
 @DiscriminatorValue("TASK_CARD")
-public class TaskCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class TaskCard extends Card {
     private String state;
     private Timestamp finishEstimation;
 
@@ -33,4 +27,36 @@ public class TaskCard {
 
     @OneToMany(mappedBy = "taskCard", fetch = FetchType.EAGER)
     private Set<Tag> tags;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Timestamp getFinishEstimation() {
+        return finishEstimation;
+    }
+
+    public void setFinishEstimation(Timestamp finishEstimation) {
+        this.finishEstimation = finishEstimation;
+    }
+
+    public TaskPanel getTaskPanel() {
+        return taskPanel;
+    }
+
+    public void setTaskPanel(TaskPanel taskPanel) {
+        this.taskPanel = taskPanel;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
 }

@@ -3,6 +3,7 @@ package dao.impl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    @Transactional
     public Company getCompany(Integer id) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             return session.get(Company.class, id);
@@ -32,6 +34,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    @Transactional
     public Company findCompanyByRegistrationNumber(String registrationNumber) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             List companies = session.createQuery("FROM model.planner.user.Company company WHERE company.registrationNumber = :registrationNumber")
@@ -49,6 +52,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    @Transactional
     public void insertCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             if (findCompanyByRegistrationNumber(company.getRegistrationNumber()) == null) {
@@ -61,6 +65,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    @Transactional
     public void updateCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             Company persistentCompany = findCompanyByRegistrationNumber(company.getRegistrationNumber());
@@ -78,6 +83,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    @Transactional
     public void deleteCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             Company persistentCompany = findCompanyByRegistrationNumber(company.getRegistrationNumber());
