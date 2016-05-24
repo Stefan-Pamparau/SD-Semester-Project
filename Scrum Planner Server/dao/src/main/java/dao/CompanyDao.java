@@ -25,7 +25,7 @@ public interface CompanyDao {
      * @return - a company with the specified registration number, null if no company found
      * @throws DaoException - thrown when a Hibernate exception occurs
      */
-    Company getCompanyByRegistrationNumber(String registrationNumber) throws DaoException;
+    Company findCompanyByRegistrationNumber(String registrationNumber) throws DaoException;
 
     /**
      * Inserts a company into the database.

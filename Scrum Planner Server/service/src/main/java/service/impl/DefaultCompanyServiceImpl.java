@@ -22,7 +22,7 @@ public class DefaultCompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company getCompanyByRegistrationNumber(String registrationNumber) throws ServiceException {
+    public Company findCompanyByRegistrationNumber(String registrationNumber) throws ServiceException {
         return null;
     }
 

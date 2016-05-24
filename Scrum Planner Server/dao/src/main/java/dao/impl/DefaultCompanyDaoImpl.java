@@ -32,7 +32,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public Company getCompanyByRegistrationNumber(String registrationNumber) throws DaoException {
+    public Company findCompanyByRegistrationNumber(String registrationNumber) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             List companies = session.createQuery("FROM model.planner.user.Company company WHERE company.registrationNumber = :registrationNumber")
                     .setParameter("registrationNumber", registrationNumber)
@@ -51,7 +51,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     @Override
     public void insertCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
-            if (getCompanyByRegistrationNumber(company.getRegistrationNumber()) == null) {
+            if (findCompanyByRegistrationNumber(company.getRegistrationNumber()) == null) {
                 session.save(company);
                 session.flush();
             }
@@ -63,7 +63,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     @Override
     public void updateCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
-            Company persistentCompany = getCompanyByRegistrationNumber(company.getRegistrationNumber());
+            Company persistentCompany = findCompanyByRegistrationNumber(company.getRegistrationNumber());
             if (persistentCompany != null) {
                 persistentCompany.setCreationDate(company.getCreationDate());
                 persistentCompany.setName(company.getName());
@@ -80,7 +80,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
     @Override
     public void deleteCompany(Company company) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
-            Company persistentCompany = getCompanyByRegistrationNumber(company.getRegistrationNumber());
+            Company persistentCompany = findCompanyByRegistrationNumber(company.getRegistrationNumber());
             if (persistentCompany != null) {
                 session.delete(persistentCompany);
                 session.flush();
