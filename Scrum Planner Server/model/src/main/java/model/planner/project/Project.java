@@ -1,5 +1,7 @@
 package model.planner.project;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,6 +36,7 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private PermissionType permissionType;
 
+    @JsonIgnore
     @ManyToOne
     private User user;
 

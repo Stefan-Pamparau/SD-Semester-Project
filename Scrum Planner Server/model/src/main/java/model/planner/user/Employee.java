@@ -15,20 +15,8 @@ import javax.persistence.ManyToOne;
 @Entity
 @DiscriminatorValue("EMPLOYEE")
 public class Employee extends User {
-    @Column(name = "employee_type")
-    @Enumerated(EnumType.STRING)
-    private EmployeeType employeeType;
-
     @ManyToOne
     private Company company;
-
-    public EmployeeType getEmployeeType() {
-        return employeeType;
-    }
-
-    public void setEmployeeType(EmployeeType employeeType) {
-        this.employeeType = employeeType;
-    }
 
     public Company getCompany() {
         return company;

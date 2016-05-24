@@ -6,5 +6,5 @@ package model.planner.user;
  * @author Stefan Pamparau
  */
 public enum UserType {
-    SIMPLE_USER, EMPLOYEE, REGULAR_USER
+    SIMPLE_USER, EMPLOYEE, REGULAR_USER, PROJECT_MANAGER, DEVELOPER
 }
