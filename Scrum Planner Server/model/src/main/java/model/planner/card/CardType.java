@@ -6,5 +6,5 @@ package model.planner.card;
  * @author Stefan Pamparau
  */
 public enum CardType {
-    STORY_CARD, TASK_CARD
+    SIMPLE_CARD, STORY_CARD, TASK_CARD
 }

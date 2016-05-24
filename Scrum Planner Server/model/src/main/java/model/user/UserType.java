@@ -6,5 +6,5 @@ package model.user;
  * @author Stefan Pamparau
  */
 public enum UserType {
-    EMPLOYEE, REGULAR_USER
+    SIMPLE_USER, EMPLOYEE, REGULAR_USER
 }

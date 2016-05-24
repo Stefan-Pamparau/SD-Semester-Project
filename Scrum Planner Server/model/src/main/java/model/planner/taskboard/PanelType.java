@@ -6,5 +6,5 @@ package model.planner.taskboard;
  * @author Stefan Pamparau
  */
 public enum PanelType {
-    STORY_PANEL, TASK_PANEL
+    SIMPLE_PANEL, STORY_PANEL, TASK_PANEL
 }
