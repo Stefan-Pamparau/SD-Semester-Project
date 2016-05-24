@@ -1,6 +1,6 @@
 package service;
 
-import model.user.Company;
+import model.planner.user.Company;
 import service.exception.ServiceException;
 
 /**

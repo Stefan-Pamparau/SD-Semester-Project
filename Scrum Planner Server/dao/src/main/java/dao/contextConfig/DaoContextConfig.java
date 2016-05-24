@@ -46,10 +46,10 @@ import model.planner.taskboard.Panel;
 import model.planner.taskboard.StoryPanel;
 import model.planner.taskboard.TaskBoard;
 import model.planner.taskboard.TaskPanel;
-import model.user.Company;
-import model.user.Employee;
-import model.user.RegularUser;
-import model.user.User;
+import model.planner.user.Company;
+import model.planner.user.Employee;
+import model.planner.user.RegularUser;
+import model.planner.user.User;
 
 
 /**

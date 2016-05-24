@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 
 import dao.EmployeeDao;
 import dao.exception.DaoException;
-import model.user.Employee;
+import model.planner.user.Employee;
 
 /**
  * Default implementation of the EmployeeDao interface.

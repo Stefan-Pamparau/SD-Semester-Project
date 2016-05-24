@@ -1,4 +1,4 @@
-package model.user;
+package model.planner.user;
 
 /**
  * Enum class which declares all the user types of the application.

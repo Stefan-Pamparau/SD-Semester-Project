@@ -3,7 +3,7 @@ package service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import dao.UserDao;
-import model.user.User;
+import model.planner.user.User;
 import service.UserService;
 import service.exception.ServiceException;
 

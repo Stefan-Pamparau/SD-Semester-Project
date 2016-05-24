@@ -1,4 +1,4 @@
-package model.user;
+package model.planner.user;
 
 /**
  * Enum whihc declares all the types of employees.

@@ -1,7 +1,7 @@
 package dao;
 
 import dao.exception.DaoException;
-import model.user.Company;
+import model.planner.user.Company;
 
 /**
  * Dao interface which declares al the methods to manipulate company entities.

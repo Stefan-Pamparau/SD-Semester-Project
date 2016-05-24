@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory;
 
 import dao.RegularUserDao;
 import dao.exception.DaoException;
-import model.user.RegularUser;
+import model.planner.user.RegularUser;
 
 /**
  * Default implementation of the RegularUserDao interface.

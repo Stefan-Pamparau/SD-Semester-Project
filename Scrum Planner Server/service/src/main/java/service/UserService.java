@@ -1,6 +1,6 @@
 package service;
 
-import model.user.User;
+import model.planner.user.User;
 import service.exception.ServiceException;
 
 /**

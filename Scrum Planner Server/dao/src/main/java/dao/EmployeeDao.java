@@ -1,7 +1,7 @@
 package dao;
 
 import dao.exception.DaoException;
-import model.user.Employee;
+import model.planner.user.Employee;
 
 /**
  * Interface which declares methods to manipulate employee entities.

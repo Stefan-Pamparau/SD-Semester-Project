@@ -1,4 +1,4 @@
-package model.user;
+package model.planner.user;
 
 import javax.persistence.DiscriminatorValue;
 

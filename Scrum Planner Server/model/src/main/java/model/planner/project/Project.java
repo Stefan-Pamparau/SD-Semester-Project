@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import model.planner.taskboard.TaskBoard;
-import model.user.User;
+import model.planner.user.User;
 
 /**
  * Model class which represents a project on the board.
