@@ -19,6 +19,15 @@ public interface EmployeeService {
     Employee getEmployee(Integer id) throws ServiceException;
 
     /**
+     * Returns a employee based on a specified CNP.
+     *
+     * @param CNP - CNP of the employee
+     * @return - the employee with the specified id, null if the employee does not exist
+     * @throws ServiceException - thrown when a Dao exception occurs
+     */
+    Employee findEmployeeByCNP(String CNP) throws ServiceException;
+
+    /**
      * Inserts a employee into the database.
      *
      * @param employee - employee to be inserted

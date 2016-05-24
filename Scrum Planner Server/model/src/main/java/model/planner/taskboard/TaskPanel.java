@@ -16,7 +16,6 @@ import model.planner.card.TaskCard;
  * @author Stefan Pamparau
  */
 @Entity
-@Table(name = "task_panel")
 @DiscriminatorValue("TASK_PANEL")
 public class TaskPanel extends Panel {
 

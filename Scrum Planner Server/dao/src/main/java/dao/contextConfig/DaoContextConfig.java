@@ -66,7 +66,7 @@ public class DaoContextConfig {
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/scrumPlannerDB");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/scrumPlannerDb?createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 
@@ -181,7 +181,7 @@ public class DaoContextConfig {
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");
         properties.put("hibernate.generate_statistics", "true");
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         return properties;
     }

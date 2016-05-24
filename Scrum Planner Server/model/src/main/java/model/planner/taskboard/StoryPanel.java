@@ -16,7 +16,6 @@ import model.planner.card.StoryCard;
  * @author Stefan Pamparau
  */
 @Entity
-@Table(name = "story_panel")
 @DiscriminatorValue("STORY_PANEL")
 public class StoryPanel extends Panel {
 

@@ -40,11 +40,11 @@ public class User {
     private String email;
     private String password;
 
-    @Column(name = "user_type")
+    @Column(name = "user_type", insertable = false, updatable = false)
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Project> projects;
 
     public Integer getId() {

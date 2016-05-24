@@ -3,6 +3,7 @@ package model.planner.user;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
@@ -12,6 +13,7 @@ import javax.persistence.OneToMany;
  */
 @DiscriminatorValue("EMPLOYEE")
 public class ProjectManager extends Employee {
-    @OneToMany
+
+    @OneToMany(mappedBy = "projectManager", fetch = FetchType.EAGER)
     private Set<Developer> developers;
 }

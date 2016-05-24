@@ -27,6 +27,15 @@ public class DefaultEmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee findEmployeeByCNP(String CNP) throws ServiceException {
+        try {
+            return employeeDao.findEmployeeByCNP(CNP);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
     public void insertEmployee(Employee employee) throws ServiceException {
         try {
             employeeDao.insertEmployee(employee);
