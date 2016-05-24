@@ -22,6 +22,11 @@ public class DefaultCompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public Company getCompanyByRegistrationNumber(String registrationNumber) throws ServiceException {
+        return null;
+    }
+
+    @Override
     public void insertCompany(Company company) throws ServiceException {
 
     }

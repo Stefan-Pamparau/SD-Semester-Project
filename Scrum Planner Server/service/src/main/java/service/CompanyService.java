@@ -19,6 +19,15 @@ public interface CompanyService {
     Company getCompany(Integer id) throws ServiceException;
 
     /**
+     * Returns a company based on it's registration number.
+     *
+     * @param registrationNumber - the registration number of the company
+     * @return - a company with the specified registration number, null if no company found
+     * @throws ServiceException - thrown when a Dao exception occurs
+     */
+    Company getCompanyByRegistrationNumber(String registrationNumber) throws ServiceException;
+
+    /**
      * Inserts a company into the database.
      *
      * @param company - company to be inserted
