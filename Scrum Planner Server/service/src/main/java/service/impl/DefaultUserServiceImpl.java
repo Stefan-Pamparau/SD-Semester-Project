@@ -3,6 +3,7 @@ package service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import dao.UserDao;
+import dao.exception.DaoException;
 import model.planner.user.User;
 import service.UserService;
 import service.exception.ServiceException;
@@ -18,6 +19,10 @@ public class DefaultUserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmailAndPassword(String email, String password) throws ServiceException {
-        return null;
+        try {
+            return userDao.getUserByEmailAndPassword(email, password);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 }

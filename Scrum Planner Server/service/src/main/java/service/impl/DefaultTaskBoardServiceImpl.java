@@ -2,6 +2,8 @@ package service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import dao.TaskBoardDao;
+import dao.exception.DaoException;
 import model.planner.taskboard.TaskBoard;
 import service.TaskBoardService;
 import service.exception.ServiceException;
@@ -13,33 +15,49 @@ import service.exception.ServiceException;
  */
 public class DefaultTaskBoardServiceImpl implements TaskBoardService {
     @Autowired
-    private TaskBoardService taskBoardService;
+    private TaskBoardDao taskBoardDao;
 
     @Override
     public TaskBoard getTaskBoard(Integer id) throws ServiceException {
-        return null;
+        try {
+            return taskBoardDao.getTaskBoard(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void insertTaskBoard(TaskBoard taskBoard) throws ServiceException {
-
+        try {
+            taskBoardDao.insertTaskBoard(taskBoard);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void updateTaskBoard(TaskBoard taskBoard) throws ServiceException {
-
+        try {
+            taskBoardDao.updateTaskBoard(taskBoard);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void deleteTaskBoard(TaskBoard taskBoard) throws ServiceException {
-
+        try {
+            taskBoardDao.deleteTaskBoard(taskBoard);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
-    public TaskBoardService getTaskBoardService() {
-        return taskBoardService;
+    public TaskBoardDao getTaskBoardDao() {
+        return taskBoardDao;
     }
 
-    public void setTaskBoardService(TaskBoardService taskBoardService) {
-        this.taskBoardService = taskBoardService;
+    public void setTaskBoardDao(TaskBoardDao taskBoardDao) {
+        this.taskBoardDao = taskBoardDao;
     }
 }

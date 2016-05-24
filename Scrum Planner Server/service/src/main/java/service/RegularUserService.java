@@ -19,6 +19,15 @@ public interface RegularUserService {
     RegularUser getRegularUser(Integer id) throws ServiceException;
 
     /**
+     * Returns a regular user based on a specified CNP.
+     *
+     * @param CNP - CNP of the employee
+     * @return - the regular user with the specified id, null if the employee does not exist
+     * @throws ServiceException - thrown when a Hibernate exception occurs
+     */
+    RegularUser findRegularUserByCNP(String CNP) throws ServiceException;
+
+    /**
      * Inserts a regularUser into the database.
      *
      * @param regularUser - regular user to be inserted

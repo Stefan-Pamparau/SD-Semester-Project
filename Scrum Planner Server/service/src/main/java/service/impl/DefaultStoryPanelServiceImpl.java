@@ -2,6 +2,8 @@ package service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import dao.StoryPanelDao;
+import dao.exception.DaoException;
 import model.planner.taskboard.StoryPanel;
 import service.StoryPanelService;
 import service.exception.ServiceException;
@@ -13,33 +15,49 @@ import service.exception.ServiceException;
  */
 public class DefaultStoryPanelServiceImpl implements StoryPanelService {
     @Autowired
-    private StoryPanelService storyPanelService;
+    private StoryPanelDao storyPanelDao;
 
     @Override
     public StoryPanel getStoryPanel(Integer id) throws ServiceException {
-        return null;
+        try {
+            return storyPanelDao.getStoryPanel(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void insertStoryPanel(StoryPanel storyPanel) throws ServiceException {
-
+        try {
+            storyPanelDao.insertStoryPanel(storyPanel);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void updateStoryPanel(StoryPanel storyPanel) throws ServiceException {
-
+        try {
+            storyPanelDao.updateStoryPanel(storyPanel);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
     public void deleteStoryPanel(StoryPanel storyPanel) throws ServiceException {
-
+        try {
+            storyPanelDao.deleteStoryPanel(storyPanel);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
     }
 
-    public StoryPanelService getStoryPanelService() {
-        return storyPanelService;
+    public StoryPanelDao getStoryPanelDao() {
+        return storyPanelDao;
     }
 
-    public void setStoryPanelService(StoryPanelService storyPanelService) {
-        this.storyPanelService = storyPanelService;
+    public void setStoryPanelDao(StoryPanelDao storyPanelDao) {
+        this.storyPanelDao = storyPanelDao;
     }
 }
