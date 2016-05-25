@@ -2,13 +2,19 @@ package model.planner.project;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,8 +43,12 @@ public class Project {
     private PermissionType permissionType;
 
     @JsonIgnore
-    @ManyToOne
-    private User user;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_project", joinColumns = {
+            @JoinColumn(name = "project_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "user_id",
+                    nullable = false, updatable = false) })
+    private Set<User> users;
 
     public Integer getId() {
         return id;
@@ -72,11 +82,11 @@ public class Project {
         this.permissionType = permissionType;
     }
 
-    public User getUser() {
-        return user;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
