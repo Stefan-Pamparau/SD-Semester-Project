@@ -6,21 +6,27 @@ import org.springframework.context.annotation.Import;
 
 import dao.contextConfig.DaoContextConfig;
 import service.CompanyService;
+import service.DeveloperService;
 import service.EmployeeService;
+import service.ProjectManagerService;
 import service.ProjectService;
 import service.RegularUserService;
 import service.StoryCardService;
 import service.StoryPanelService;
+import service.TagService;
 import service.TaskBoardService;
 import service.TaskCardService;
 import service.TaskPanelService;
 import service.UserService;
 import service.impl.DefaultCompanyServiceImpl;
+import service.impl.DefaultDeveloperServiceImpl;
 import service.impl.DefaultEmployeeServiceImpl;
+import service.impl.DefaultProjectManagerServiceImpl;
 import service.impl.DefaultProjectServiceImpl;
 import service.impl.DefaultRegularUserServiceImpl;
 import service.impl.DefaultStoryCardServiceImpl;
 import service.impl.DefaultStoryPanelServiceImpl;
+import service.impl.DefaultTagServiceImpl;
 import service.impl.DefaultTaskBoardServiceImpl;
 import service.impl.DefaultTaskCardServiceImpl;
 import service.impl.DefaultTaskPanelServiceImpl;
@@ -83,5 +89,20 @@ public class ServiceContextConfig {
     @Bean(name = "userService")
     public UserService getUserService() {
         return new DefaultUserServiceImpl();
+    }
+
+    @Bean(name = "developerService")
+    public DeveloperService getDeveloperService() {
+        return new DefaultDeveloperServiceImpl();
+    }
+
+    @Bean(name = "projectManagerService")
+    public ProjectManagerService getProjectManagerService() {
+        return new DefaultProjectManagerServiceImpl();
+    }
+
+    @Bean(name = "tagService")
+    public TagService getTagService() {
+        return new DefaultTagServiceImpl();
     }
 }
