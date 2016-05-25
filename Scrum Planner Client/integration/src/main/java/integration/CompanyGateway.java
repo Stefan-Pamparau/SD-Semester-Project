@@ -1,7 +1,7 @@
 package integration;
 
 import integration.exception.IntegrationException;
-import model.planner.user.Developer;
+import model.planner.user.Company;
 
 /**
  * Interface declaring all methods to manipulate Company entities.
@@ -10,44 +10,44 @@ import model.planner.user.Developer;
  */
 public interface CompanyGateway {
     /**
-     * Returns a developer based on a specified id.
+     * Returns a company based on a specified id.
      *
-     * @param id - id of the developer
-     * @return - the developer with the specified id, null if the developer does not exist
-     * @throws IntegrationException - thrown when a Server exception occurs
+     * @param id - id of the company
+     * @return - the company with the specified id, null if the company does not exist
+     * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    Developer getDeveloper(Integer id) throws IntegrationException;
+    Company getCompany(Integer id) throws IntegrationException;
 
     /**
-     * Returns a developer based on a specified CNP.
+     * Returns a company based on it's registration number.
      *
-     * @param CNP - CNP of the developer
-     * @return - the developer with the specified id, null if the developer does not exist
-     * @throws IntegrationException - thrown when a Server exception occurs
+     * @param registrationNumber - the registration number of the company
+     * @return - a company with the specified registration number, null if no company found
+     * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    Developer findDeveloperByCNP(String CNP) throws IntegrationException;
+    Company findCompanyByRegistrationNumber(String registrationNumber) throws IntegrationException;
 
     /**
-     * Inserts a developer into the database.
+     * Inserts a company into the database.
      *
-     * @param developer - developer to be inserted
-     * @throws IntegrationException - thrown when a Server exception occurs
+     * @param company - company to be inserted
+     * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    void insertDeveloper(Developer developer) throws IntegrationException;
+    void insertCompany(Company company) throws IntegrationException;
 
     /**
-     * Updates a developer from the database.
+     * Updates a company from the database.
      *
-     * @param developer - developer to be updated
-     * @throws IntegrationException - thrown when a Server exception occurs
+     * @param company - company to be updated
+     * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    void updateDeveloper(Developer developer) throws IntegrationException;
+    void updateCompany(Company company) throws IntegrationException;
 
     /**
-     * Deletes a developer from the database.
+     * Deletes a company from the database.
      *
-     * @param developer - developer to be deleted.
-     * @throws IntegrationException - thrown when a Server exception occurs
+     * @param company - company to be deleted.
+     * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    void deleteDeveloper(Developer developer) throws IntegrationException;
+    void deleteCompany(Company company) throws IntegrationException;
 }
