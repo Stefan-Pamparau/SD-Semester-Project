@@ -12,48 +12,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import model.planner.user.RegularUser;
-import service.RegularUserService;
+import model.planner.user.ProjectManager;
+import service.ProjectManagerService;
 import service.exception.ServiceException;
 
 /**
- * Controller mapped to respond to regular user specific requests.
+ * Controller mapped to project manager specific requests.
  *
  * @author Stefan Pamparau
  */
 @RestController
-@RequestMapping(path = "/regularUser")
-public class RegularUserController {
+@RequestMapping(path = "/projectManager")
+public class ProjectManagerController {
     @Autowired
-    private RegularUserService regularUserService;
+    private ProjectManagerService projectManagerService;
 
     @RequestMapping(path = "/get/{id}", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForId(@PathVariable("id") Integer id) {
+    public ResponseEntity<ProjectManager> getProjectManagerForId(@PathVariable("id") Integer id) {
         try {
-            return new ResponseEntity<>(regularUserService.getRegularUser(id), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(projectManagerService.getProjectManager(id), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/get", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForCNP(@RequestParam("CNP") String CNP) {
+    public ResponseEntity<ProjectManager> getProjectManagerForCNP(@RequestParam("CNP") String CNP) {
         try {
-            return new ResponseEntity<>(regularUserService.findRegularUserByCNP(CNP), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(projectManagerService.findProjectManagerByCNP(CNP), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/insert", method = RequestMethod.POST)
-    public ResponseEntity<?> insertRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<?> insertProjectManager(@RequestBody ProjectManager projectManager) {
         try {
-            regularUserService.insertRegularUser(regularUser);
+            projectManagerService.insertProjectManager(projectManager);
 
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setLocation(ServletUriComponentsBuilder
                     .fromCurrentRequest().path("/{id}")
-                    .buildAndExpand(regularUser.getId()).toUri());
+                    .buildAndExpand(projectManager.getId()).toUri());
 
             return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
@@ -62,9 +62,9 @@ public class RegularUserController {
     }
 
     @RequestMapping(path = "/update", method = RequestMethod.POST)
-    public ResponseEntity<Void> updateRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> updateProjectManager(@RequestBody ProjectManager projectManager) {
         try {
-            regularUserService.updateRegularUser(regularUser);
+            projectManagerService.updateProjectManager(projectManager);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
@@ -73,9 +73,9 @@ public class RegularUserController {
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
-    public ResponseEntity<Void> deleteRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> deleteProjectManager(@RequestBody ProjectManager projectManager) {
         try {
-            regularUserService.deleteRegularUser(regularUser);
+            projectManagerService.deleteProjectManager(projectManager);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {

@@ -12,48 +12,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import model.planner.user.RegularUser;
-import service.RegularUserService;
+import model.planner.user.Developer;
+import service.DeveloperService;
 import service.exception.ServiceException;
 
 /**
- * Controller mapped to respond to regular user specific requests.
+ * Controller mapped to respond to developer specific constraints.
  *
  * @author Stefan Pamparau
  */
 @RestController
-@RequestMapping(path = "/regularUser")
-public class RegularUserController {
+@RequestMapping(path = "/developer")
+public class DeveloperController {
     @Autowired
-    private RegularUserService regularUserService;
+    private DeveloperService developerService;
 
     @RequestMapping(path = "/get/{id}", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForId(@PathVariable("id") Integer id) {
+    public ResponseEntity<Developer> getDeveloperForId(@PathVariable("id") Integer id) {
         try {
-            return new ResponseEntity<>(regularUserService.getRegularUser(id), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(developerService.getDeveloper(id), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/get", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForCNP(@RequestParam("CNP") String CNP) {
+    public ResponseEntity<Developer> getDeveloperForCNP(@RequestParam("CNP") String CNP) {
         try {
-            return new ResponseEntity<>(regularUserService.findRegularUserByCNP(CNP), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(developerService.findDeveloperByCNP(CNP), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/insert", method = RequestMethod.POST)
-    public ResponseEntity<?> insertRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<?> insertDeveloper(@RequestBody Developer developer) {
         try {
-            regularUserService.insertRegularUser(regularUser);
+            developerService.insertDeveloper(developer);
 
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setLocation(ServletUriComponentsBuilder
                     .fromCurrentRequest().path("/{id}")
-                    .buildAndExpand(regularUser.getId()).toUri());
+                    .buildAndExpand(developer.getId()).toUri());
 
             return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
@@ -62,9 +62,9 @@ public class RegularUserController {
     }
 
     @RequestMapping(path = "/update", method = RequestMethod.POST)
-    public ResponseEntity<Void> updateRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> updateDeveloper(@RequestBody Developer developer) {
         try {
-            regularUserService.updateRegularUser(regularUser);
+            developerService.updateDeveloper(developer);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
@@ -73,9 +73,9 @@ public class RegularUserController {
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
-    public ResponseEntity<Void> deleteRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> deleteDeveloper(@RequestBody Developer developer) {
         try {
-            regularUserService.deleteRegularUser(regularUser);
+            developerService.deleteDeveloper(developer);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {

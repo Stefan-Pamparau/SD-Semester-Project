@@ -8,52 +8,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import model.planner.user.RegularUser;
-import service.RegularUserService;
+import model.planner.card.Tag;
+import service.TagService;
 import service.exception.ServiceException;
 
 /**
- * Controller mapped to respond to regular user specific requests.
+ * Controller mapped to respond to tag specific requests.
  *
  * @author Stefan Pamparau
  */
 @RestController
-@RequestMapping(path = "/regularUser")
-public class RegularUserController {
+@RequestMapping(path = "/tag")
+public class TagController {
     @Autowired
-    private RegularUserService regularUserService;
+    private TagService tagService;
 
     @RequestMapping(path = "/get/{id}", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForId(@PathVariable("id") Integer id) {
+    public ResponseEntity<Tag> getTagForId(@PathVariable("id") Integer id) {
         try {
-            return new ResponseEntity<>(regularUserService.getRegularUser(id), HttpStatus.ACCEPTED);
-        } catch (ServiceException e) {
-            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @RequestMapping(path = "/get", method = RequestMethod.GET)
-    public ResponseEntity<RegularUser> getRegularUserForCNP(@RequestParam("CNP") String CNP) {
-        try {
-            return new ResponseEntity<>(regularUserService.findRegularUserByCNP(CNP), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(tagService.getTag(id), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/insert", method = RequestMethod.POST)
-    public ResponseEntity<?> insertRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<?> insertProject(@RequestBody Tag tag) {
         try {
-            regularUserService.insertRegularUser(regularUser);
+            tagService.insertTag(tag);
 
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setLocation(ServletUriComponentsBuilder
                     .fromCurrentRequest().path("/{id}")
-                    .buildAndExpand(regularUser.getId()).toUri());
+                    .buildAndExpand(tag.getId()).toUri());
 
             return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
@@ -62,22 +52,22 @@ public class RegularUserController {
     }
 
     @RequestMapping(path = "/update", method = RequestMethod.POST)
-    public ResponseEntity<Void> updateRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> updateProject(@RequestBody Tag tag) {
         try {
-            regularUserService.updateRegularUser(regularUser);
+            tagService.updateTag(tag);
 
-            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
-    public ResponseEntity<Void> deleteRegularUser(@RequestBody RegularUser regularUser) {
+    public ResponseEntity<Void> deleteProject(@RequestBody Tag tag) {
         try {
-            regularUserService.deleteRegularUser(regularUser);
+            tagService.deleteTag(tag);
 
-            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
