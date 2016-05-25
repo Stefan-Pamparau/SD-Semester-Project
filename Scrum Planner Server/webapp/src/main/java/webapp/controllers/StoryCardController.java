@@ -48,7 +48,7 @@ public class StoryCardController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateStoryCard(@RequestBody StoryCard storyCard) {
         try {
             storyCardService.updateStoryCard(storyCard);
@@ -59,9 +59,22 @@ public class StoryCardController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteStoryCard(@RequestBody StoryCard storyCard) {
         try {
+            storyCardService.deleteStoryCard(storyCard);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteStoryCardForId(@PathVariable("id") Integer id) {
+        try {
+            StoryCard storyCard = new StoryCard();
+            storyCard.setId(id);
             storyCardService.deleteStoryCard(storyCard);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

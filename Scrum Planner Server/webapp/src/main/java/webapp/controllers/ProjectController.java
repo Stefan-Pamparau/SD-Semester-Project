@@ -51,7 +51,7 @@ public class ProjectController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateProject(@RequestBody Project project) {
         try {
             projectService.updateProject(project);
@@ -62,12 +62,25 @@ public class ProjectController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProject(@RequestBody Project project) {
         try {
             projectService.deleteProject(project);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.CREATED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProjectForId(@PathVariable("id") Integer id) {
+        try {
+            Project project = new Project();
+            project.setId(id);
+            projectService.deleteProject(project);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

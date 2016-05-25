@@ -70,10 +70,23 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.PUT)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteEmployee(@RequestBody Employee employee) {
         try {
             employeeService.deleteEmployee(employee);
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteEmployeeForId(@PathVariable("id") Integer id) {
+        try {
+            Employee employee = new Employee();
+            employee.setId(id);
+            employeeService.deleteEmployee(employee);
+
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);

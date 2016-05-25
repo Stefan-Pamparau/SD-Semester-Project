@@ -48,7 +48,7 @@ public class StoryPanelController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateStoryPanel(@RequestBody StoryPanel storyPanel) {
         try {
             storyPanelService.updateStoryPanel(storyPanel);
@@ -59,9 +59,22 @@ public class StoryPanelController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteStoryPanel(@RequestBody StoryPanel storyPanel) {
         try {
+            storyPanelService.deleteStoryPanel(storyPanel);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteStoryPanelForId(@PathVariable("id") Integer id) {
+        try {
+            StoryPanel storyPanel = new StoryPanel();
+            storyPanel.setId(id);
             storyPanelService.deleteStoryPanel(storyPanel);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

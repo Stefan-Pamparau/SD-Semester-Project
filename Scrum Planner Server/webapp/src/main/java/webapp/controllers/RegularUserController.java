@@ -61,7 +61,7 @@ public class RegularUserController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateRegularUser(@RequestBody RegularUser regularUser) {
         try {
             regularUserService.updateRegularUser(regularUser);
@@ -72,9 +72,22 @@ public class RegularUserController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteRegularUser(@RequestBody RegularUser regularUser) {
         try {
+            regularUserService.deleteRegularUser(regularUser);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteRegularUserForId(@PathVariable("id") Integer id) {
+        try {
+            RegularUser regularUser = new RegularUser();
+            regularUser.setId(id);
             regularUserService.deleteRegularUser(regularUser);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

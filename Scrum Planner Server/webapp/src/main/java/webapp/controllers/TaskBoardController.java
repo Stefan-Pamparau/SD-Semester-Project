@@ -48,7 +48,7 @@ public class TaskBoardController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateTaskBoard(@RequestBody TaskBoard taskBoard) {
         try {
             taskBoardService.updateTaskBoard(taskBoard);
@@ -59,9 +59,22 @@ public class TaskBoardController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteTaskBoard(@RequestBody TaskBoard taskBoard) {
         try {
+            taskBoardService.deleteTaskBoard(taskBoard);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteTaskBoardForId(@PathVariable("id") Integer id) {
+        try {
+            TaskBoard taskBoard = new TaskBoard();
+            taskBoard.setId(id);
             taskBoardService.deleteTaskBoard(taskBoard);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

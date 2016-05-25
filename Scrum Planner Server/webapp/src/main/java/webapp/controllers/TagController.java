@@ -51,7 +51,7 @@ public class TagController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateProject(@RequestBody Tag tag) {
         try {
             tagService.updateTag(tag);
@@ -62,12 +62,25 @@ public class TagController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProject(@RequestBody Tag tag) {
         try {
             tagService.deleteTag(tag);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.CREATED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteTagForId(@PathVariable("id") Integer id) {
+        try {
+            Tag tag = new Tag();
+            tag.setId(id);
+            tagService.deleteTag(tag);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

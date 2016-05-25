@@ -48,7 +48,7 @@ public class TaskCardController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateTaskCard(@RequestBody TaskCard taskCard) {
         try {
             taskCardService.updateTaskCard(taskCard);
@@ -59,9 +59,22 @@ public class TaskCardController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteTaskCard(@RequestBody TaskCard taskCard) {
         try {
+            taskCardService.deleteTaskCard(taskCard);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteTaskCardForId(@PathVariable("id") Integer id) {
+        try {
+            TaskCard taskCard = new TaskCard();
+            taskCard.setId(id);
             taskCardService.deleteTaskCard(taskCard);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

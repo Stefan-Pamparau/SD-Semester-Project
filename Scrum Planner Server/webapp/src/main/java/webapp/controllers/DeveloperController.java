@@ -61,7 +61,7 @@ public class DeveloperController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateDeveloper(@RequestBody Developer developer) {
         try {
             developerService.updateDeveloper(developer);
@@ -72,9 +72,22 @@ public class DeveloperController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteDeveloper(@RequestBody Developer developer) {
         try {
+            developerService.deleteDeveloper(developer);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteDeveloperForId(@PathVariable("id") Integer id) {
+        try {
+            Developer developer = new Developer();
+            developer.setId(id);
             developerService.deleteDeveloper(developer);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);

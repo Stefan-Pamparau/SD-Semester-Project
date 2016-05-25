@@ -61,7 +61,7 @@ public class ProjectManagerController {
         }
     }
 
-    @RequestMapping(path = "/update", method = RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Void> updateProjectManager(@RequestBody ProjectManager projectManager) {
         try {
             projectManagerService.updateProjectManager(projectManager);
@@ -72,9 +72,22 @@ public class ProjectManagerController {
         }
     }
 
-    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProjectManager(@RequestBody ProjectManager projectManager) {
         try {
+            projectManagerService.deleteProjectManager(projectManager);
+
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
+        } catch (ServiceException e) {
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProjectManagerForId(@PathVariable("id") Integer id) {
+        try {
+            ProjectManager projectManager = new ProjectManager();
+            projectManager.setId(id);
             projectManagerService.deleteProjectManager(projectManager);
 
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.ACCEPTED);
