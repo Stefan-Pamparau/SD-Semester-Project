@@ -22,4 +22,28 @@ public class Tag {
 
     @ManyToOne
     private TaskCard taskCard;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TaskCard getTaskCard() {
+        return taskCard;
+    }
+
+    public void setTaskCard(TaskCard taskCard) {
+        this.taskCard = taskCard;
+    }
 }

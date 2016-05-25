@@ -2,7 +2,6 @@ package dao.contextConfig;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ListFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,45 +10,36 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
-import javax.smartcardio.Card;
 import javax.sql.DataSource;
 
 import dao.CompanyDao;
+import dao.DeveloperDao;
 import dao.EmployeeDao;
 import dao.ProjectDao;
+import dao.ProjectManagerDao;
 import dao.RegularUserDao;
 import dao.StoryCardDao;
 import dao.StoryPanelDao;
+import dao.TagDao;
 import dao.TaskBoardDao;
 import dao.TaskCardDao;
 import dao.TaskPanelDao;
 import dao.UserDao;
 import dao.impl.DefaultCompanyDaoImpl;
+import dao.impl.DefaultDeveloperDaoImpl;
 import dao.impl.DefaultEmployeeDaoImpl;
 import dao.impl.DefaultProjectDaoImpl;
+import dao.impl.DefaultProjectManagerImpl;
 import dao.impl.DefaultRegularUserDaoImpl;
 import dao.impl.DefaultStoryCardDaoImpl;
 import dao.impl.DefaultStoryPanelDaoImpl;
+import dao.impl.DefaultTagDaoImpl;
 import dao.impl.DefaultTaskBoardDaoImpl;
 import dao.impl.DefaultTaskCardDaoImpl;
 import dao.impl.DefaultTaskPanelDaoImpl;
 import dao.impl.DefaultUserDaoImpl;
-import model.planner.card.StoryCard;
-import model.planner.card.Tag;
-import model.planner.card.TaskCard;
-import model.planner.project.Project;
-import model.planner.taskboard.Panel;
-import model.planner.taskboard.StoryPanel;
-import model.planner.taskboard.TaskBoard;
-import model.planner.taskboard.TaskPanel;
-import model.planner.user.Company;
-import model.planner.user.Employee;
-import model.planner.user.RegularUser;
-import model.planner.user.User;
 
 
 /**
@@ -149,31 +139,22 @@ public class DaoContextConfig {
         return new DefaultUserDaoImpl(sessionFactory);
     }
 
-    @Bean(name = "hibernateAnnotatedClasses")
-    public ListFactoryBean getListFactory() {
-        List<Class<?>> classes = new ArrayList<>();
-        classes.add(Card.class);
-//        classes.add(CardType.class);
-        classes.add(StoryCard.class);
-        classes.add(Tag.class);
-        classes.add(TaskCard.class);
-//        classes.add(PermissionType.class);
-        classes.add(Project.class);
-        classes.add(Panel.class);
-//        classes.add(PanelType.class);
-        classes.add(StoryPanel.class);
-        classes.add(TaskBoard.class);
-        classes.add(TaskPanel.class);
-        classes.add(Company.class);
-        classes.add(Employee.class);
-//        classes.add(EmployeeType.class);
-        classes.add(RegularUser.class);
-        classes.add(User.class);
-//        classes.add(UserType.class);
+    @Autowired
+    @Bean(name = "developerDao")
+    public DeveloperDao getDeveloperDao(SessionFactory sessionFactory) {
+        return new DefaultDeveloperDaoImpl();
+    }
 
-        ListFactoryBean annotatedClasses = new ListFactoryBean();
-        annotatedClasses.setSourceList(classes);
-        return annotatedClasses;
+    @Autowired
+    @Bean(name = "projectManagerDao")
+    public ProjectManagerDao getProjectManagerDao(SessionFactory sessionFactory) {
+        return new DefaultProjectManagerImpl();
+    }
+
+    @Autowired
+    @Bean(name = "tagDao")
+    public TagDao getTagDao(SessionFactory sessionFactory) {
+        return new DefaultTagDaoImpl();
     }
 
     private Properties getHibernateProperties() {
