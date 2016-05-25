@@ -25,9 +25,9 @@ public class DefaultStoryCardGatewayImpl implements StoryCardGateway {
     }
 
     @Override
-    public void insertStoryCard(StoryCard storyCard) throws IntegrationException {
+    public StoryCard insertStoryCard(StoryCard storyCard) throws IntegrationException {
         HttpEntity<StoryCard> request = new HttpEntity<>(storyCard);
-        StoryCard receivedStoryCard = restTemplate.postForObject(SERVER_URL + "/storyCard/insert", request, StoryCard.class);
+        return restTemplate.postForObject(SERVER_URL + "/storyCard/insert", request, StoryCard.class);
     }
 
     @Override

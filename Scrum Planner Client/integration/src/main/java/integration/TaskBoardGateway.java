@@ -24,7 +24,7 @@ public interface TaskBoardGateway {
      * @param taskBoard - task board to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertTaskBoard(TaskBoard taskBoard) throws IntegrationException;
+    TaskBoard insertTaskBoard(TaskBoard taskBoard) throws IntegrationException;
 
     /**
      * Updates a task board from the database.

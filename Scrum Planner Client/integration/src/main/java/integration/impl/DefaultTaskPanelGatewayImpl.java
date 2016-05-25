@@ -25,9 +25,9 @@ public class DefaultTaskPanelGatewayImpl implements TaskPanelGateway {
     }
 
     @Override
-    public void insertTaskPanel(TaskPanel taskPanel) throws IntegrationException {
+    public TaskPanel insertTaskPanel(TaskPanel taskPanel) throws IntegrationException {
         HttpEntity<TaskPanel> request = new HttpEntity<>(taskPanel);
-        TaskPanel receivedTaskPanel = restTemplate.postForObject(SERVER_URL + "/taskPanel/insert", request, TaskPanel.class);
+        return restTemplate.postForObject(SERVER_URL + "/taskPanel/insert", request, TaskPanel.class);
     }
 
     @Override

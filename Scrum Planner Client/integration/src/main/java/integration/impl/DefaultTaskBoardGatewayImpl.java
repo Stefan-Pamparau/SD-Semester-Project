@@ -25,9 +25,9 @@ public class DefaultTaskBoardGatewayImpl implements TaskBoardGateway {
     }
 
     @Override
-    public void insertTaskBoard(TaskBoard taskBoard) throws IntegrationException {
+    public TaskBoard insertTaskBoard(TaskBoard taskBoard) throws IntegrationException {
         HttpEntity<TaskBoard> request = new HttpEntity<>(taskBoard);
-        TaskBoard receivedTaskBoard = restTemplate.postForObject(SERVER_URL + "/taskBoard/insert", request, TaskBoard.class);
+        return restTemplate.postForObject(SERVER_URL + "/taskBoard/insert", request, TaskBoard.class);
     }
 
     @Override

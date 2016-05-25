@@ -31,9 +31,9 @@ public class DefaultDeveloperGatewayImpl implements DeveloperGateway {
     }
 
     @Override
-    public void insertDeveloper(Developer developer) throws IntegrationException {
+    public Developer insertDeveloper(Developer developer) throws IntegrationException {
         HttpEntity<Developer> request = new HttpEntity<>(developer);
-        Developer receivedDeveloper = restTemplate.postForObject(SERVER_URL + "/company/insert", request, Developer.class);
+        return restTemplate.postForObject(SERVER_URL + "/developer/insert", request, Developer.class);
     }
 
     @Override

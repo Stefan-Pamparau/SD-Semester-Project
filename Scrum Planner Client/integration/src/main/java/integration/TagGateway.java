@@ -24,7 +24,7 @@ public interface TagGateway {
      * @param tag - tag to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertTag(Tag tag) throws IntegrationException;
+    Tag insertTag(Tag tag) throws IntegrationException;
 
     /**
      * Updates a tag from the database.

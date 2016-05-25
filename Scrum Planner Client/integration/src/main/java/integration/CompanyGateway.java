@@ -33,7 +33,7 @@ public interface CompanyGateway {
      * @param company - company to be inserted
      * @throws IntegrationException - thrown when a Dao exception occurs
      */
-    void insertCompany(Company company) throws IntegrationException;
+    Company insertCompany(Company company) throws IntegrationException;
 
     /**
      * Updates a company from the database.

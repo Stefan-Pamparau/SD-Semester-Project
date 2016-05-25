@@ -25,9 +25,9 @@ public class DefaultTaskCardGatewayImpl implements TaskCardGateway {
     }
 
     @Override
-    public void insertTaskCard(TaskCard taskCard) throws IntegrationException {
+    public TaskCard insertTaskCard(TaskCard taskCard) throws IntegrationException {
         HttpEntity<TaskCard> request = new HttpEntity<>(taskCard);
-        TaskCard receivedTaskCard = restTemplate.postForObject(SERVER_URL + "/taskCard/insert", request, TaskCard.class);
+        return restTemplate.postForObject(SERVER_URL + "/taskCard/insert", request, TaskCard.class);
     }
 
     @Override

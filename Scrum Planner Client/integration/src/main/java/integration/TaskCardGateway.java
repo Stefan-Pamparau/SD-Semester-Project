@@ -24,7 +24,7 @@ public interface TaskCardGateway {
      * @param taskCard - task card to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertTaskCard(TaskCard taskCard) throws IntegrationException;
+    TaskCard insertTaskCard(TaskCard taskCard) throws IntegrationException;
 
     /**
      * Updates a task card from the database.

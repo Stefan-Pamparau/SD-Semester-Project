@@ -26,9 +26,9 @@ public class DefaultProjectGatewayImpl implements ProjectGateway {
     }
 
     @Override
-    public void insertProject(Project project) throws IntegrationException {
+    public Project insertProject(Project project) throws IntegrationException {
         HttpEntity<Project> request = new HttpEntity<>(project);
-        Project receivedProject = restTemplate.postForObject(SERVER_URL + "/project/insert", request, Project.class);
+        return restTemplate.postForObject(SERVER_URL + "/project/insert", request, Project.class);
     }
 
     @Override

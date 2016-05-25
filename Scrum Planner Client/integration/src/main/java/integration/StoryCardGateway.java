@@ -24,7 +24,7 @@ public interface StoryCardGateway {
      * @param storyCard - story card to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertStoryCard(StoryCard storyCard) throws IntegrationException;
+    StoryCard insertStoryCard(StoryCard storyCard) throws IntegrationException;
 
     /**
      * Updates a storyCard from the database.

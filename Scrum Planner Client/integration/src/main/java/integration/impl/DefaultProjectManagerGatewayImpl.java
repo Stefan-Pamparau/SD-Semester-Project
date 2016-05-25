@@ -32,9 +32,9 @@ public class DefaultProjectManagerGatewayImpl implements ProjectManagerGateway {
     }
 
     @Override
-    public void insertProjectManager(ProjectManager projectManager) throws IntegrationException {
+    public ProjectManager insertProjectManager(ProjectManager projectManager) throws IntegrationException {
         HttpEntity<Employee> request = new HttpEntity<>(projectManager);
-        ProjectManager receivedProjectManager = restTemplate.postForObject(SERVER_URL + "/projectManager/insert", request, ProjectManager.class);
+        return restTemplate.postForObject(SERVER_URL + "/projectManager/insert", request, ProjectManager.class);
     }
 
     @Override

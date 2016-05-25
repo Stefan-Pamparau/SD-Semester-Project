@@ -33,7 +33,7 @@ public interface RegularUserGateway {
      * @param regularUser - regular user to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertRegularUser(RegularUser regularUser) throws IntegrationException;
+    RegularUser insertRegularUser(RegularUser regularUser) throws IntegrationException;
 
     /**
      * Updates a regularUser from the database.

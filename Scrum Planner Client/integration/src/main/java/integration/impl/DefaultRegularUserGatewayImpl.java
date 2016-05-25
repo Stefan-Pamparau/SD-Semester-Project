@@ -31,9 +31,9 @@ public class DefaultRegularUserGatewayImpl implements RegularUserGateway {
     }
 
     @Override
-    public void insertRegularUser(RegularUser regularUser) throws IntegrationException {
+    public RegularUser insertRegularUser(RegularUser regularUser) throws IntegrationException {
         HttpEntity<RegularUser> request = new HttpEntity<>(regularUser);
-        RegularUser receivedRegularUser = restTemplate.postForObject(SERVER_URL + "/regularUser/insert", request, RegularUser.class);
+        return restTemplate.postForObject(SERVER_URL + "/regularUser/insert", request, RegularUser.class);
     }
 
     @Override

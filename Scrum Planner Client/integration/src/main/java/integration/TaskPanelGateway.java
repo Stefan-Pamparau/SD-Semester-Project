@@ -24,7 +24,7 @@ public interface TaskPanelGateway {
      * @param taskPanel - task panel to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertTaskPanel(TaskPanel taskPanel) throws IntegrationException;
+    TaskPanel insertTaskPanel(TaskPanel taskPanel) throws IntegrationException;
 
     /**
      * Updates a task panel from the database.

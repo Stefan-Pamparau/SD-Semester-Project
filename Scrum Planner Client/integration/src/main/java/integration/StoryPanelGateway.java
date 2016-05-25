@@ -24,7 +24,7 @@ public interface StoryPanelGateway {
      * @param storyPanel - story panel to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertStoryPanel(StoryPanel storyPanel) throws IntegrationException;
+    StoryPanel insertStoryPanel(StoryPanel storyPanel) throws IntegrationException;
 
     /**
      * Updates a storyPanel from the database.

@@ -33,7 +33,7 @@ public interface DeveloperGateway {
      * @param developer - developer to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertDeveloper(Developer developer) throws IntegrationException;
+    Developer insertDeveloper(Developer developer) throws IntegrationException;
 
     /**
      * Updates a developer from the database.

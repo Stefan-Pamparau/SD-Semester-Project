@@ -31,9 +31,9 @@ public class DefaultCompanyGatewayImpl implements CompanyGateway {
     }
 
     @Override
-    public void insertCompany(Company company) throws IntegrationException {
+    public Company insertCompany(Company company) throws IntegrationException {
         HttpEntity<Company> request = new HttpEntity<>(company);
-        Company receivedCompany = restTemplate.postForObject(SERVER_URL + "/company/insert", request, Company.class);
+        return restTemplate.postForObject(SERVER_URL + "/company/insert", request, Company.class);
     }
 
     @Override

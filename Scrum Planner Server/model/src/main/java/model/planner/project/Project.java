@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,11 +43,11 @@ public class Project {
     private PermissionType permissionType;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_project", joinColumns = {
-            @JoinColumn(name = "project_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "user_id",
-                    nullable = false, updatable = false) })
+            @JoinColumn(name = "project_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id",
+                    nullable = false, updatable = false)})
     private Set<User> users;
 
     public Integer getId() {

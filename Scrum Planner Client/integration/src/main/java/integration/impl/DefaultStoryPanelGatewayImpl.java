@@ -26,9 +26,9 @@ public class DefaultStoryPanelGatewayImpl implements StoryPanelGateway {
     }
 
     @Override
-    public void insertStoryPanel(StoryPanel storyPanel) throws IntegrationException {
+    public StoryPanel insertStoryPanel(StoryPanel storyPanel) throws IntegrationException {
         HttpEntity<StoryPanel> request = new HttpEntity<>(storyPanel);
-        StoryPanel receivedStoryPanel = restTemplate.postForObject(SERVER_URL + "/storyPanel/insert", request, StoryPanel.class);
+        return restTemplate.postForObject(SERVER_URL + "/storyPanel/insert", request, StoryPanel.class);
     }
 
     @Override

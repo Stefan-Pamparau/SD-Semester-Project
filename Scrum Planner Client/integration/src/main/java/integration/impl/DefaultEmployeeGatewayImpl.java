@@ -31,9 +31,9 @@ public class DefaultEmployeeGatewayImpl implements EmployeeGateway {
     }
 
     @Override
-    public void insertEmployee(Employee employee) throws IntegrationException {
+    public Employee insertEmployee(Employee employee) throws IntegrationException {
         HttpEntity<Employee> request = new HttpEntity<>(employee);
-        Employee receivedEmployee = restTemplate.postForObject(SERVER_URL + "/employee/insert", request, Employee.class);
+        return restTemplate.postForObject(SERVER_URL + "/employee/insert", request, Employee.class);
     }
 
     @Override

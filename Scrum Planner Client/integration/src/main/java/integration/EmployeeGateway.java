@@ -33,7 +33,7 @@ public interface EmployeeGateway {
      * @param employee - employee to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertEmployee(Employee employee) throws IntegrationException;
+    Employee insertEmployee(Employee employee) throws IntegrationException;
 
     /**
      * Updates a employee from the database.

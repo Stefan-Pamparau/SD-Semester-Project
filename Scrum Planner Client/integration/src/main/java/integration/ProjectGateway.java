@@ -24,7 +24,7 @@ public interface ProjectGateway {
      * @param project - project to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertProject(Project project) throws IntegrationException;
+    Project insertProject(Project project) throws IntegrationException;
 
     /**
      * Updates a project from the database.

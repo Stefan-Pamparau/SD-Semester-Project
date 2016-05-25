@@ -35,7 +35,7 @@ public interface ProjectManagerGateway {
      * @param projectManager - project manager to be inserted
      * @throws IntegrationException - thrown when a Server exception occurs
      */
-    void insertProjectManager(ProjectManager projectManager) throws IntegrationException;
+    ProjectManager insertProjectManager(ProjectManager projectManager) throws IntegrationException;
 
     /**
      * Updates a projectManager from the database.

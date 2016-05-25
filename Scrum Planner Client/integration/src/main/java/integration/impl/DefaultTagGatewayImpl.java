@@ -25,9 +25,9 @@ public class DefaultTagGatewayImpl implements TagGateway {
     }
 
     @Override
-    public void insertTag(Tag tag) throws IntegrationException {
+    public Tag insertTag(Tag tag) throws IntegrationException {
         HttpEntity<Tag> request = new HttpEntity<>(tag);
-        Tag receivedTag = restTemplate.postForObject(SERVER_URL + "/tag/insert", request, Tag.class);
+        return restTemplate.postForObject(SERVER_URL + "/tag/insert", request, Tag.class);
     }
 
     @Override
