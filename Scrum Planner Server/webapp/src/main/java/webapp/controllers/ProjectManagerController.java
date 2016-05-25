@@ -55,7 +55,7 @@ public class ProjectManagerController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(projectManager.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(projectManager, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

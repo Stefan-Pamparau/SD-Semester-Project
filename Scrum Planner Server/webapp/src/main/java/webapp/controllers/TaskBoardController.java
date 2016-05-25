@@ -42,7 +42,7 @@ public class TaskBoardController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(taskBoard.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(taskBoard, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

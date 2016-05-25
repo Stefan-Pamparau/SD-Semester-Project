@@ -45,7 +45,7 @@ public class TagController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(tag.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(tag, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

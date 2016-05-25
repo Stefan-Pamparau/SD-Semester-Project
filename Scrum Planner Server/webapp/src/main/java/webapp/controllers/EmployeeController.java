@@ -54,7 +54,7 @@ public class EmployeeController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(employee.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(employee, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

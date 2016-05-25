@@ -55,7 +55,7 @@ public class DeveloperController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(developer.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(developer, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

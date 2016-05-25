@@ -42,7 +42,7 @@ public class StoryPanelController {
                     .fromCurrentRequest().path("/{id}")
                     .buildAndExpand(storyPanel.getId()).toUri());
 
-            return new ResponseEntity<>(null, httpHeaders, HttpStatus.CREATED);
+            return new ResponseEntity<>(storyPanel, httpHeaders, HttpStatus.CREATED);
         } catch (ServiceException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
