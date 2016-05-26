@@ -5,10 +5,12 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import integration.DeveloperGateway;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
+import ui.ClientBoot;
 import ui.dialogUtils.InformationDialogUtils;
 
 /**
@@ -19,6 +21,8 @@ import ui.dialogUtils.InformationDialogUtils;
 public class DeveloperController extends Menu implements Initializable {
     private static final String LOCALES_EN_PATH = "locales/locale";
     private static final String DEVELOPER_CONTROLLER_VIEW_PATH = "/views/customControllerViews/developerControllerView.fxml";
+
+    private DeveloperGateway developerGateway;
 
     public DeveloperController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(DEVELOPER_CONTROLLER_VIEW_PATH), ResourceBundle.getBundle(LOCALES_EN_PATH, new Locale("en", "EN")));
@@ -47,9 +51,9 @@ public class DeveloperController extends Menu implements Initializable {
     public void handleDeleteDeveloperAction(ActionEvent actionEvent) {
 
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        developerGateway = (DeveloperGateway) ClientBoot.getApplicationContext().getBean("developerGateway");
     }
 }

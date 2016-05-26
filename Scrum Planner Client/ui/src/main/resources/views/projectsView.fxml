@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import ui.controllers.customControllers.ProjectController?>
+<?import ui.controllers.customControllers.ProjectManagerController?>
+<?import ui.controllers.customControllers.DeveloperController?>
+<?import ui.controllers.customControllers.CompanyController?>
 <GridPane xmlns:fx="http://javafx.com/fxml"
           fx:id="root"
-          fx:controller="ui.controllers.LoginController"
-          alignment="center" hgap="10.0" vgap="10.0">
+          fx:controller="ui.controllers.ProjectViewController"
+          hgap="10.0" vgap="10.0">
+
+    <MenuBar fx:id="optionsMenuBar" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <CompanyController fx:id="companyController" text="%projectView.companyController"/>
+        <ProjectController fx:id="projectController" text="%projectView.projectController"/>
+        <ProjectManagerController fx:id="projectManagerController" text="%projectView.projectManagerController"/>
+        <DeveloperController fx:id="developerController" text="%projectView.developerController"/>
+    </MenuBar>
 
 </GridPane>

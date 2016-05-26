@@ -5,10 +5,12 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import integration.ProjectManagerGateway;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
+import ui.ClientBoot;
 import ui.dialogUtils.InformationDialogUtils;
 
 /**
@@ -19,6 +21,8 @@ import ui.dialogUtils.InformationDialogUtils;
 public class ProjectManagerController extends Menu implements Initializable {
     private static final String LOCALES_EN_PATH = "locales/locale";
     private static final String PROJECT_MANAGER_CONTROLLER_VIEW_PATH = "/views/customControllerViews/projectManagerControllerView.fxml";
+
+    private ProjectManagerGateway projectManagerGateway;
 
     public ProjectManagerController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PROJECT_MANAGER_CONTROLLER_VIEW_PATH), ResourceBundle.getBundle(LOCALES_EN_PATH, new Locale("en", "EN")));
@@ -50,6 +54,6 @@ public class ProjectManagerController extends Menu implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        projectManagerGateway = (ProjectManagerGateway) ClientBoot.getApplicationContext().getBean("projectManagerGateway");
     }
 }

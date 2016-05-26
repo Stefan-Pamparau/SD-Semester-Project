@@ -74,6 +74,7 @@ public class DefaultProjectManagerImpl implements ProjectManagerDao {
                 persistentProjectManager.setAge(projectManager.getAge());
                 persistentProjectManager.setPassword(projectManager.getPassword());
                 persistentProjectManager.setProjects(projectManager.getProjects());
+                persistentProjectManager.setDevelopers(projectManager.getDevelopers());
                 session.update(persistentProjectManager);
                 session.flush();
             }

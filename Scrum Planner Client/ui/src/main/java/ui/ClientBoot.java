@@ -14,6 +14,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.planner.project.Project;
 
 /**
  * Class which boots up the client application.
@@ -70,7 +71,7 @@ public class ClientBoot extends Application {
         replaceSceneRoot(PROJECTS_VIEW_PATH);
     }
 
-    public void goToTaskBoardView() {
+    public void goToTaskBoardView(Project project) {
         replaceSceneRoot(TASKBOARD_VIEW_PATH);
     }
 
@@ -82,6 +83,7 @@ public class ClientBoot extends Application {
             if (scene == null) {
                 scene = new Scene(root, 800, 600);
                 stage.setScene(scene);
+                scene.getStylesheets().add(getClass().getResource("/css/defaultCss.css").toExternalForm());
             } else {
                 stage.getScene().setRoot(root);
             }

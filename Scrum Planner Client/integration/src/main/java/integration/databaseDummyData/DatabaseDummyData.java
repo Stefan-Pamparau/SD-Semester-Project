@@ -153,7 +153,7 @@ public class DatabaseDummyData {
         project1.setTaskBoard(taskBoard1);
         Set<User> users1 = new HashSet<>();
         users1.add(regularUser);
-        project1.setUsers(users1);
+        //project1.setUsers(users1);
 
         Project project2 = new Project();
         project2.setName("Project 2");
@@ -163,7 +163,7 @@ public class DatabaseDummyData {
         users2.add(developer1);
         users2.add(developer2);
         users2.add(projectManager);
-        project2.setUsers(users2);
+        //project2.setUsers(users2);
 
         Project project3 = new Project();
         project3.setName("Project 3");
@@ -171,7 +171,7 @@ public class DatabaseDummyData {
         project3.setTaskBoard(taskBoard3);
         Set<User> users3 = new HashSet<>();
         users3.add(developer1);
-        project3.setUsers(users3);
+        //project3.setUsers(users3);
 
         Project project4 = new Project();
         project4.setName("Project 4");
@@ -179,7 +179,7 @@ public class DatabaseDummyData {
         project4.setTaskBoard(taskBoard4);
         Set<User> users4 = new HashSet<>();
         users4.add(developer2);
-        project4.setUsers(users4);
+        //project4.setUsers(users4);
 
         project1 = projectGateway.insertProject(project1);
         project2 = projectGateway.insertProject(project2);
@@ -190,17 +190,23 @@ public class DatabaseDummyData {
         projects1.add(project1);
         regularUser.setProjects(projects1);
 
+        regularUserGateway.updateRegularUser(regularUser);
+
         Set<Project> projects2 = new HashSet<>();
         projects2.add(project2);
-        developer1.setProjects(projects2);
-        developer2.setProjects(projects2);
         projectManager.setProjects(projects2);
 
-        developer1.getProjects().add(project3);
-        developer2.getProjects().add(project4);
+        projectManagerGateway.updateProjectManager(projectManager);
 
-        developer1.setProjectManager(projectManager);
-        developer2.setProjectManager(projectManager);
+        Set<Project> projects3 = new HashSet<>();
+        projects3.add(project2);
+        projects3.add(project3);
+        developer1.setProjects(projects3);
+
+        Set<Project> projects4 = new HashSet<>();
+        projects4.add(project2);
+        projects4.add(project4);
+        developer2.setProjects(projects4);
 
         developerGateway.updateDeveloper(developer1);
         developerGateway.updateDeveloper(developer2);

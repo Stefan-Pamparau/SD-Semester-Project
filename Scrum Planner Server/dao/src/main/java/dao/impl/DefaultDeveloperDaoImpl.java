@@ -74,7 +74,7 @@ public class DefaultDeveloperDaoImpl implements DeveloperDao {
                 persistentDeveloper.setAge(developer.getAge());
                 persistentDeveloper.setPassword(developer.getPassword());
                 persistentDeveloper.setProjects(developer.getProjects());
-                persistentDeveloper.setProjectManager(developer.getProjectManager());
+//                persistentDeveloper.setProjectManager(developer.getProjectManager());
                 session.update(persistentDeveloper);
                 session.flush();
             }
