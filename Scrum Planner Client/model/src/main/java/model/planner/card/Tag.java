@@ -1,6 +1,8 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,13 +18,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tag")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@tagId")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
 
-    @JsonIgnore
     @ManyToOne
     private TaskCard taskCard;
 

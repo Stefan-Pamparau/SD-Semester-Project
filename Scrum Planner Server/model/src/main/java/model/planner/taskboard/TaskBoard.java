@@ -1,6 +1,9 @@
 package model.planner.taskboard;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.util.Set;
 
@@ -19,12 +22,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "task_board")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@taskBoardId")
 public class TaskBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "taskBoard", fetch = FetchType.EAGER)
     private Set<Panel> panels;
 

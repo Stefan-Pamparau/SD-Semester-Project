@@ -1,6 +1,9 @@
 package model.planner.taskboard;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -28,6 +31,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "panel_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("SIMPLE_PANEL")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@panelId")
 public class Panel {
 
     @Id

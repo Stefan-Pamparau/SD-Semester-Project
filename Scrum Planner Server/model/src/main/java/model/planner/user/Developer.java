@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 @DiscriminatorValue("DEVELOPER")
 public class Developer extends Employee {
 
-    @JsonIgnore
     @ManyToOne
     @JoinTable(name = "projectManager_developer", joinColumns = {
             @JoinColumn(name = "developer_id") }, inverseJoinColumns = {

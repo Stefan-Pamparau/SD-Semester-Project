@@ -265,19 +265,6 @@ public class DatabaseDummyData {
 
         storyPanel4 = storyPanelGateway.insertStoryPanel(storyPanel4);
 
-        Set<Panel> panels1 = new HashSet<>();
-        Set<Panel> panels2 = new HashSet<>();
-        Set<Panel> panels3 = new HashSet<>();
-        Set<Panel> panels4 = new HashSet<>();
-
-        panels1.add(storyPanel1);
-        panels2.add(storyPanel2);
-        panels3.add(storyPanel3);
-        panels4.add(storyPanel4);
-
-        taskBoard1.setPanels(panels1);
-        taskBoardGateway.updateTaskBoard(taskBoard1);
-
         TaskPanel taskPanel21 = new TaskPanel();
         taskPanel21.setPanelType(PanelType.TASK_PANEL);
         taskPanel21.setTitle("Backlog");
@@ -299,6 +286,24 @@ public class DatabaseDummyData {
         taskPanel21 = taskPanelGateway.insertTaskPanel(taskPanel21);
         taskPanel22 = taskPanelGateway.insertTaskPanel(taskPanel22);
         taskPanel23 = taskPanelGateway.insertTaskPanel(taskPanel23);
+
+        Set<Panel> panels1 = new HashSet<>();
+        Set<Panel> panels2 = new HashSet<>();
+        Set<Panel> panels3 = new HashSet<>();
+        Set<Panel> panels4 = new HashSet<>();
+
+        panels1.add(storyPanel1);
+        panels2.add(storyPanel2);
+        panels2.add(taskPanel21);
+        panels2.add(taskPanel22);
+        panels2.add(taskPanel23);
+        panels3.add(storyPanel3);
+        panels4.add(storyPanel4);
+
+        taskBoard1.setPanels(panels1);
+        taskBoard2.setPanels(panels2);
+        taskBoardGateway.updateTaskBoard(taskBoard1);
+        taskBoardGateway.updateTaskBoard(taskBoard2);
 
         TaskCard taskCard21 = new TaskCard();
         taskCard21.setTitle("Backlog taskcard");
@@ -329,8 +334,5 @@ public class DatabaseDummyData {
         taskCard23.setPanel(taskPanel23);
         taskCard23.setState("Done");
         taskCard23 = taskCardGateway.insertTaskCard(taskCard23);
-
-        TaskCard test = taskCardGateway.getTaskCard(2);
-        int a = 0;
     }
 }

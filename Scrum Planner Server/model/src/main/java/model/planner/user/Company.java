@@ -28,7 +28,6 @@ public class Company {
     private String name;
     private Timestamp creationDate;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private Set<Employee> employees;
 

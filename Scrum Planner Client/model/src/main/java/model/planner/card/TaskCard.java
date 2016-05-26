@@ -1,6 +1,8 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.sql.Timestamp;
 import java.util.Set;
@@ -20,6 +22,7 @@ import model.planner.taskboard.TaskPanel;
  */
 @Entity
 @DiscriminatorValue("TASK_CARD")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@taskCardId")
 public class TaskCard extends Card {
     private String state;
     private Timestamp finishEstimation;

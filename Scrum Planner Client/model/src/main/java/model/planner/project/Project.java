@@ -1,9 +1,12 @@
 package model.planner.project;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +31,7 @@ import model.planner.user.User;
  */
 @Entity
 @Table(name = "project")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@projectId")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,16 +41,15 @@ public class Project {
     private TaskBoard taskBoard;
     private String name;
 
-    @Column(name = "permission_type", insertable = false, updatable = false)
+    @Column(name = "permission_type")
     @Enumerated(EnumType.STRING)
     private PermissionType permissionType;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_project", joinColumns = {
-            @JoinColumn(name = "project_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "user_id",
-                    nullable = false, updatable = false) })
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_project", joinColumns = {
+//            @JoinColumn(name = "project_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "user_id",
+//                    nullable = false, updatable = false)})
     private Set<User> users;
 
     public Integer getId() {

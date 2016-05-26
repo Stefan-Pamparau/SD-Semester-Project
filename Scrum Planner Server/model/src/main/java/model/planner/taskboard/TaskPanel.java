@@ -1,5 +1,8 @@
 package model.planner.taskboard;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
@@ -17,6 +20,7 @@ import model.planner.card.TaskCard;
  */
 @Entity
 @DiscriminatorValue("TASK_PANEL")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@taskPanelId")
 public class TaskPanel extends Panel {
 
     @OneToMany(mappedBy = "taskPanel", fetch = FetchType.EAGER)

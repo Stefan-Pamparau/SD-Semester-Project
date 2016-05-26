@@ -1,6 +1,8 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -29,6 +31,7 @@ import model.planner.taskboard.Panel;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "card_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("SIMPLE_CARD")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@cardId")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

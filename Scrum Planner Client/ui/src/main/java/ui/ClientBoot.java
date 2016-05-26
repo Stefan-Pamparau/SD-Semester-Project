@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.planner.project.Project;
+import ui.controllers.TaskBoardView;
 
 /**
  * Class which boots up the client application.
@@ -72,13 +73,17 @@ public class ClientBoot extends Application {
     }
 
     public void goToTaskBoardView(Project project) {
-        replaceSceneRoot(TASKBOARD_VIEW_PATH);
+        TaskBoardView taskBoardView = (TaskBoardView) replaceSceneRoot(TASKBOARD_VIEW_PATH);
+        taskBoardView.setProject(project);
+        taskBoardView.drawTaskBoard();
     }
 
-    private void replaceSceneRoot(String fxmlPath) {
+    private Object replaceSceneRoot(String fxmlPath) {
         Pane root = null;
+        FXMLLoader fxmlLoader = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(fxmlPath), ResourceBundle.getBundle(LOCALES_EN_PATH, new Locale("en", "EN")), new JavaFXBuilderFactory());
+            fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath), ResourceBundle.getBundle(LOCALES_EN_PATH, new Locale("en", "EN")), new JavaFXBuilderFactory());
+            root = fxmlLoader.load();
             Scene scene = stage.getScene();
             if (scene == null) {
                 scene = new Scene(root, 800, 600);
@@ -92,6 +97,8 @@ public class ClientBoot extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return fxmlLoader.getController();
     }
 
     private void bindRootToScene(Scene scene, Pane root) {

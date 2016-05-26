@@ -1,6 +1,8 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -18,6 +20,7 @@ import model.planner.taskboard.StoryPanel;
  */
 @Entity
 @DiscriminatorValue("STORY_CARD")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@storyCardId")
 public class StoryCard extends Card {
     private Integer storyPoints;
 
