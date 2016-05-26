@@ -221,17 +221,6 @@ public class DatabaseDummyData {
         developerGateway.updateDeveloper(developer2);
         developerGateway.updateDeveloper(developer3);
 
-        StoryCard storyCard2 = new StoryCard();
-        storyCard2.setStoryPoints(12);
-        storyCard2.setCardType(CardType.STORY_CARD);
-        storyCard2.setTitle("Default story card title 2");
-        storyCard2.setDescription("Default Story card Description 2");
-
-        storyCardGateway.insertStoryCard(storyCard2);
-
-        Set<StoryCard> storyCards2 = new HashSet<>();
-        storyCards2.add(storyCard2);
-
         StoryPanel storyPanel1 = new StoryPanel();
         storyPanel1.setPanelType(PanelType.STORY_PANEL);
         storyPanel1.setTaskBoard(taskBoard1);
@@ -243,7 +232,7 @@ public class DatabaseDummyData {
         StoryPanel storyPanel2 = new StoryPanel();
         storyPanel2.setPanelType(PanelType.STORY_PANEL);
         storyPanel2.setTaskBoard(taskBoard2);
-        storyPanel2.setStoryCards(storyCards2);
+//        storyPanel2.setStoryCards(storyCards2);
         storyPanel2.setTitle("Stories");
         storyPanel2.setPosition(1);
 
@@ -264,6 +253,18 @@ public class DatabaseDummyData {
         storyPanel4.setPosition(1);
 
         storyPanel4 = storyPanelGateway.insertStoryPanel(storyPanel4);
+
+        StoryCard storyCard2 = new StoryCard();
+        storyCard2.setStoryPoints(12);
+        storyCard2.setCardType(CardType.STORY_CARD);
+        storyCard2.setTitle("Default story card title 2");
+        storyCard2.setDescription("Default Story card Description 2");
+        storyCard2.setStoryPanel(storyPanel2);
+
+        storyCardGateway.insertStoryCard(storyCard2);
+
+        Set<StoryCard> storyCards2 = new HashSet<>();
+        storyCards2.add(storyCard2);
 
         TaskPanel taskPanel21 = new TaskPanel();
         taskPanel21.setPanelType(PanelType.TASK_PANEL);
@@ -311,7 +312,7 @@ public class DatabaseDummyData {
         taskCard21.setDescription("Default description");
         taskCard21.setFinishEstimation(new Timestamp(123123));
         taskCard21.setTaskPanel(taskPanel21);
-        taskCard21.setPanel(taskPanel21);
+//        taskCard21.setPanel(taskPanel21);
         taskCard21.setState("In backlog");
         taskCard21 = taskCardGateway.insertTaskCard(taskCard21);
 
@@ -321,7 +322,7 @@ public class DatabaseDummyData {
         taskCard22.setDescription("Default description");
         taskCard22.setFinishEstimation(new Timestamp(123123));
         taskCard22.setTaskPanel(taskPanel22);
-        taskCard22.setPanel(taskPanel22);
+//        taskCard22.setPanel(taskPanel22);
         taskCard22.setState("In progress");
         taskCard22 = taskCardGateway.insertTaskCard(taskCard22);
 
@@ -331,7 +332,7 @@ public class DatabaseDummyData {
         taskCard23.setDescription("Default description");
         taskCard23.setFinishEstimation(new Timestamp(123123));
         taskCard23.setTaskPanel(taskPanel23);
-        taskCard23.setPanel(taskPanel23);
+//        taskCard23.setPanel(taskPanel23);
         taskCard23.setState("Done");
         taskCard23 = taskCardGateway.insertTaskCard(taskCard23);
     }

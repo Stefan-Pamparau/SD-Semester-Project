@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import ui.controllers.customControllers.TaskPanelController?>
+<?import ui.controllers.customControllers.TaskCardController?>
+<?import ui.controllers.customControllers.StoryCardController?>
 <GridPane xmlns:fx="http://javafx.com/fxml"
           fx:id="root"
-          fx:controller="ui.controllers.LoginController"
-          alignment="center" hgap="10.0" vgap="10.0">
+          fx:controller="ui.controllers.TaskBoardView"
+          hgap="10.0" vgap="10.0">
+
+    <MenuBar fx:id="optionsMenuBar" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="10">
+        <TaskPanelController fx:id="taskPanelController" text="%taskBoardView.taskPanelController"/>
+        <StoryCardController fx:id="storyCardController" text="%taskBoardView.storyCardController"/>
+        <TaskCardController fx:id="taskCardController" text="%taskBoardView.taskCardController"/>
+    </MenuBar>
 
 </GridPane>

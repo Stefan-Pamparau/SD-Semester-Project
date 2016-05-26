@@ -43,9 +43,6 @@ public class Card {
     @Enumerated(EnumType.STRING)
     private CardType cardType;
 
-    @ManyToOne
-    private Panel panel;
-
     public Integer getId() {
         return id;
     }
@@ -76,13 +73,5 @@ public class Card {
 
     public void setCardType(CardType cardType) {
         this.cardType = cardType;
-    }
-
-    public Panel getPanel() {
-        return panel;
-    }
-
-    public void setPanel(Panel panel) {
-        this.panel = panel;
     }
 }

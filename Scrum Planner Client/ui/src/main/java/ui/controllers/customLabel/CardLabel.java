@@ -20,7 +20,7 @@ import ui.ClientBoot;
  * @author Stefan Pamparau
  */
 public class CardLabel extends Label {
-    private ContextMenu clientContextMenu;
+    private ContextMenu cardContextMenu;
 
     private ProjectGateway projectGateway;
     private StoryCardGateway storyCardGateway;
@@ -34,16 +34,17 @@ public class CardLabel extends Label {
      * Initializes the context menu by adding it's menu items.
      */
     private void initializeContextMenu() {
-        clientContextMenu = new ContextMenu();
+        cardContextMenu = new ContextMenu();
         MenuItem updateCard = new MenuItem("Update card");
         MenuItem moveLeft = new MenuItem("Move left");
         MenuItem moveRight = new MenuItem("Move right");
         MenuItem deleteCard = new MenuItem("Delete card");
-        clientContextMenu.getItems().addAll(updateCard, moveLeft, moveRight, deleteCard);
+        cardContextMenu.getItems().addAll(updateCard, moveLeft, moveRight, deleteCard);
         addUpdateCardInfoHandler(updateCard);
         addMoveLeftHandler(moveLeft);
         addMoveRightHandler(moveRight);
         addDeleteCardHandler(deleteCard);
+        this.setContextMenu(cardContextMenu);
     }
 
     private void initializeGateways() {
