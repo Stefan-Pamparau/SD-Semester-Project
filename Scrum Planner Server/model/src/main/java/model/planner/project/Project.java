@@ -43,11 +43,11 @@ public class Project {
     private PermissionType permissionType;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_project", joinColumns = {
-            @JoinColumn(name = "project_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "user_id",
-                    nullable = false, updatable = false)})
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_project", joinColumns = {
+//            @JoinColumn(name = "project_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "user_id",
+//                    nullable = false, updatable = false)})
     private Set<User> users;
 
     public Integer getId() {
