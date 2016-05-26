@@ -1,6 +1,8 @@
 package model.planner.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @DiscriminatorValue("DEVELOPER")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@developerId")
 public class Developer extends Employee {
 
     @ManyToOne

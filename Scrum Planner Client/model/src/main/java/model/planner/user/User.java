@@ -1,5 +1,8 @@
 package model.planner.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -33,6 +36,7 @@ import model.planner.project.Project;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("SIMPLE_USER")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@userId")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
