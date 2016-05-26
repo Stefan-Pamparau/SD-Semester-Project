@@ -11,6 +11,7 @@ import integration.ProjectGateway;
 import integration.ProjectManagerGateway;
 import integration.RegularUserGateway;
 import integration.StoryCardGateway;
+import integration.StoryPanelGateway;
 import integration.TagGateway;
 import integration.TaskBoardGateway;
 import integration.TaskCardGateway;
@@ -23,6 +24,7 @@ import integration.impl.DefaultProjectGatewayImpl;
 import integration.impl.DefaultProjectManagerGatewayImpl;
 import integration.impl.DefaultRegularUserGatewayImpl;
 import integration.impl.DefaultStoryCardGatewayImpl;
+import integration.impl.DefaultStoryPanelGatewayImpl;
 import integration.impl.DefaultTagGatewayImpl;
 import integration.impl.DefaultTaskBoardGatewayImpl;
 import integration.impl.DefaultTaskCardGatewayImpl;
@@ -69,6 +71,11 @@ public class IntegrationContextConfig {
     @Bean(name = "storyCardGateway")
     public StoryCardGateway getStoryCardGateway() {
         return new DefaultStoryCardGatewayImpl();
+    }
+
+    @Bean(name = "storyPanelGateway")
+    public StoryPanelGateway getStoryPanelGateway() {
+        return new DefaultStoryPanelGatewayImpl();
     }
 
     @Bean(name = "tagGateway")
