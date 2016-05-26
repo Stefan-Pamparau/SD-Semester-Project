@@ -56,6 +56,7 @@ public class DefaultTaskCardDaoImpl implements TaskCardDao {
                 persistentTaskCard.setTags(taskCard.getTags());
 //                persistentTaskCard.setTaskPanel(taskCard.getTaskPanel());
                 session.update(persistentTaskCard);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot update task card", e);
@@ -70,6 +71,7 @@ public class DefaultTaskCardDaoImpl implements TaskCardDao {
 
             if (persistentTaskCard != null) {
                 session.delete(persistentTaskCard);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot delete task card", e);

@@ -36,6 +36,7 @@ public class DefaultTaskBoardDaoImpl implements TaskBoardDao {
     public void insertTaskBoard(TaskBoard taskBoard) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             session.save(taskBoard);
+            session.flush();
         } catch (HibernateException e) {
             throw new DaoException("Cannot insert task board", e);
         }
@@ -50,6 +51,7 @@ public class DefaultTaskBoardDaoImpl implements TaskBoardDao {
             if (persistentTaskBoard != null) {
                 persistentTaskBoard.setPanels(taskBoard.getPanels());
                 session.update(persistentTaskBoard);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot update task board", e);
@@ -64,6 +66,7 @@ public class DefaultTaskBoardDaoImpl implements TaskBoardDao {
 
             if (persistentTaskBoard != null) {
                 session.delete(persistentTaskBoard);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot delete task board", e);

@@ -73,7 +73,7 @@ public class DefaultCompanyDaoImpl implements CompanyDao {
                 persistentCompany.setCreationDate(company.getCreationDate());
                 persistentCompany.setName(company.getName());
                 persistentCompany.setRegistrationNumber(company.getRegistrationNumber());
-                persistentCompany.setEmployees(company.getEmployees());
+//                persistentCompany.setEmployees(company.getEmployees());
                 session.update(persistentCompany);
                 session.flush();
             }

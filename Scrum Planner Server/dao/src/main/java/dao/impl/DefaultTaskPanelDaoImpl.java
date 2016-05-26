@@ -36,6 +36,7 @@ public class DefaultTaskPanelDaoImpl implements TaskPanelDao {
     public void insertTaskPanel(TaskPanel taskPanel) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             session.save(taskPanel);
+            session.flush();
         } catch (HibernateException e) {
             throw new DaoException("Cannot insert task panel", e);
         }
@@ -50,6 +51,7 @@ public class DefaultTaskPanelDaoImpl implements TaskPanelDao {
             if (persistentTaskPanel != null) {
                 persistentTaskPanel.setTaskCards(taskPanel.getTaskCards());
                 session.update(persistentTaskPanel);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot update task panel", e);
@@ -64,6 +66,7 @@ public class DefaultTaskPanelDaoImpl implements TaskPanelDao {
 
             if (persistentTaskPanel != null) {
                 session.delete(persistentTaskPanel);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot delete task panel", e);

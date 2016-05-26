@@ -36,6 +36,7 @@ public class DefaultStoryPanelDaoImpl implements StoryPanelDao {
     public void insertStoryPanel(StoryPanel storyPanel) throws DaoException {
         try (Session session = sessionFactory.openSession()) {
             session.save(storyPanel);
+            session.flush();
         } catch (HibernateException e) {
             throw new DaoException("Cannot insert story panel", e);
         }
@@ -50,6 +51,7 @@ public class DefaultStoryPanelDaoImpl implements StoryPanelDao {
             if (persistentStoryPanel != null) {
                 persistentStoryPanel.setStoryCards(storyPanel.getStoryCards());
                 session.update(persistentStoryPanel);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot update story panel", e);
@@ -63,7 +65,8 @@ public class DefaultStoryPanelDaoImpl implements StoryPanelDao {
             StoryPanel persistentStoryPanel = session.get(StoryPanel.class, storyPanel.getId());
 
             if (persistentStoryPanel != null) {
-                session.update(persistentStoryPanel);
+                session.delete(persistentStoryPanel);
+                session.flush();
             }
         } catch (HibernateException e) {
             throw new DaoException("Cannot delete story panel", e);

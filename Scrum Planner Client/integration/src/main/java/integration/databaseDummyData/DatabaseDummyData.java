@@ -15,15 +15,22 @@ import integration.ProjectGateway;
 import integration.ProjectManagerGateway;
 import integration.RegularUserGateway;
 import integration.StoryCardGateway;
+import integration.StoryPanelGateway;
 import integration.TagGateway;
 import integration.TaskBoardGateway;
 import integration.TaskCardGateway;
 import integration.TaskPanelGateway;
 import integration.contextConfig.IntegrationContextConfig;
 import integration.exception.IntegrationException;
+import model.planner.card.CardType;
+import model.planner.card.StoryCard;
 import model.planner.project.PermissionType;
 import model.planner.project.Project;
+import model.planner.taskboard.Panel;
+import model.planner.taskboard.PanelType;
+import model.planner.taskboard.StoryPanel;
 import model.planner.taskboard.TaskBoard;
+import model.planner.taskboard.TaskPanel;
 import model.planner.user.Company;
 import model.planner.user.Developer;
 import model.planner.user.Employee;
@@ -47,6 +54,7 @@ public class DatabaseDummyData {
         ProjectManagerGateway projectManagerGateway = (ProjectManagerGateway) applicationContext.getBean("projectManagerGateway");
         RegularUserGateway regularUserGateway = (RegularUserGateway) applicationContext.getBean("regularUserGateway");
         StoryCardGateway storyCardGateway = (StoryCardGateway) applicationContext.getBean("storyCardGateway");
+        StoryPanelGateway storyPanelGateway = (StoryPanelGateway) applicationContext.getBean("storyPanelGateway");
         TagGateway tagGateway = (TagGateway) applicationContext.getBean("tagGateway");
         TaskBoardGateway taskBoardGateway = (TaskBoardGateway) applicationContext.getBean("taskBoardGateway");
         TaskCardGateway taskCardGateway = (TaskCardGateway) applicationContext.getBean("taskCardGateway");
@@ -211,5 +219,57 @@ public class DatabaseDummyData {
         developerGateway.updateDeveloper(developer1);
         developerGateway.updateDeveloper(developer2);
         developerGateway.updateDeveloper(developer3);
+
+        StoryCard storyCard2 = new StoryCard();
+        storyCard2.setStoryPoints(12);
+        storyCard2.setCardType(CardType.STORY_CARD);
+        storyCard2.setTitle("Default story card title 2");
+        storyCard2.setDescription("Default Story card Description 2");
+
+        storyCardGateway.insertStoryCard(storyCard2);
+
+        Set<StoryCard> storyCards2 = new HashSet<>();
+        storyCards2.add(storyCard2);
+
+        StoryPanel storyPanel1 = new StoryPanel();
+        storyPanel1.setPanelType(PanelType.STORY_PANEL);
+        storyPanel1.setTaskBoard(taskBoard1);
+
+        storyPanel1 = storyPanelGateway.insertStoryPanel(storyPanel1);
+
+        StoryPanel storyPanel2 = new StoryPanel();
+        storyPanel2.setPanelType(PanelType.STORY_PANEL);
+        storyPanel2.setTaskBoard(taskBoard2);
+        storyPanel2.setStoryCards(storyCards2);
+
+        storyPanel2 = storyPanelGateway.insertStoryPanel(storyPanel2);
+
+        StoryPanel storyPanel3 = new StoryPanel();
+        storyPanel3.setPanelType(PanelType.STORY_PANEL);
+        storyPanel3.setTaskBoard(taskBoard3);
+
+        storyPanel3 = storyPanelGateway.insertStoryPanel(storyPanel3);
+
+        StoryPanel storyPanel4 = new StoryPanel();
+        storyPanel4.setPanelType(PanelType.STORY_PANEL);
+        storyPanel4.setTaskBoard(taskBoard4);
+
+        storyPanel4 = storyPanelGateway.insertStoryPanel(storyPanel4);
+
+        Set<Panel> panels1 = new HashSet<>();
+        Set<Panel> panels2 = new HashSet<>();
+        Set<Panel> panels3 = new HashSet<>();
+        Set<Panel> panels4 = new HashSet<>();
+
+        panels1.add(storyPanel1);
+        panels2.add(storyPanel2);
+        panels3.add(storyPanel3);
+        panels4.add(storyPanel4);
+
+        taskBoard1.setPanels(panels1);
+        taskBoardGateway.updateTaskBoard(taskBoard1);
+
+        TaskPanel taskPanel21 = new TaskPanel();
+//        taskPanel21.setPanelType(Pen);
     }
 }
