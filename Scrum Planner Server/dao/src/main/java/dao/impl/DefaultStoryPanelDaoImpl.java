@@ -50,6 +50,8 @@ public class DefaultStoryPanelDaoImpl implements StoryPanelDao {
 
             if (persistentStoryPanel != null) {
                 persistentStoryPanel.setStoryCards(storyPanel.getStoryCards());
+                persistentStoryPanel.setTitle(storyPanel.getTitle());
+                persistentStoryPanel.setPosition(storyPanel.getPosition());
                 session.update(persistentStoryPanel);
                 session.flush();
             }

@@ -18,7 +18,6 @@ import model.planner.taskboard.StoryPanel;
 public class StoryCard extends Card {
     private Integer storyPoints;
 
-    @JsonIgnore
     @ManyToOne
     private StoryPanel storyPanel;
 

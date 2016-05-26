@@ -50,6 +50,8 @@ public class DefaultTaskPanelDaoImpl implements TaskPanelDao {
 
             if (persistentTaskPanel != null) {
                 persistentTaskPanel.setTaskCards(taskPanel.getTaskCards());
+                persistentTaskPanel.setTitle(taskPanel.getTitle());
+                persistentTaskPanel.setPosition(taskPanel.getPosition());
                 session.update(persistentTaskPanel);
                 session.flush();
             }

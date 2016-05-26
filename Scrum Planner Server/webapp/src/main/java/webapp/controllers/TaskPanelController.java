@@ -21,7 +21,7 @@ import service.exception.ServiceException;
  * @author Stefan Pamparau
  */
 @RestController
-@RequestMapping(path = "/atskPanel")
+@RequestMapping(path = "/taskPanel")
 public class TaskPanelController {
     @Autowired
     private TaskPanelService taskPanelService;

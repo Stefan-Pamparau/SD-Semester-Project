@@ -38,7 +38,7 @@ public class Project {
     private TaskBoard taskBoard;
     private String name;
 
-    @Column(name = "permission_type", insertable = false, updatable = false)
+    @Column(name = "permission_type")
     @Enumerated(EnumType.STRING)
     private PermissionType permissionType;
 

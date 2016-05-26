@@ -7,12 +7,15 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,12 +34,24 @@ public class Panel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String title;
+
+    private Integer position;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "panel_type", insertable = false, updatable = false)
     private PanelType panelType;
 
-    @JsonIgnore
     @ManyToOne
     private TaskBoard taskBoard;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public Integer getId() {
         return id;
@@ -60,5 +75,13 @@ public class Panel {
 
     public void setTaskBoard(TaskBoard taskBoard) {
         this.taskBoard = taskBoard;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 }

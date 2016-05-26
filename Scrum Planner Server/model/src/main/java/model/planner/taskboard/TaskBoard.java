@@ -1,5 +1,7 @@
 package model.planner.taskboard;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -22,6 +24,7 @@ public class TaskBoard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "taskBoard", fetch = FetchType.EAGER)
     private Set<Panel> panels;
 

@@ -24,6 +24,7 @@ import integration.contextConfig.IntegrationContextConfig;
 import integration.exception.IntegrationException;
 import model.planner.card.CardType;
 import model.planner.card.StoryCard;
+import model.planner.card.TaskCard;
 import model.planner.project.PermissionType;
 import model.planner.project.Project;
 import model.planner.taskboard.Panel;
@@ -234,6 +235,8 @@ public class DatabaseDummyData {
         StoryPanel storyPanel1 = new StoryPanel();
         storyPanel1.setPanelType(PanelType.STORY_PANEL);
         storyPanel1.setTaskBoard(taskBoard1);
+        storyPanel1.setTitle("Stories");
+        storyPanel1.setPosition(1);
 
         storyPanel1 = storyPanelGateway.insertStoryPanel(storyPanel1);
 
@@ -241,18 +244,24 @@ public class DatabaseDummyData {
         storyPanel2.setPanelType(PanelType.STORY_PANEL);
         storyPanel2.setTaskBoard(taskBoard2);
         storyPanel2.setStoryCards(storyCards2);
+        storyPanel2.setTitle("Stories");
+        storyPanel2.setPosition(1);
 
         storyPanel2 = storyPanelGateway.insertStoryPanel(storyPanel2);
 
         StoryPanel storyPanel3 = new StoryPanel();
         storyPanel3.setPanelType(PanelType.STORY_PANEL);
         storyPanel3.setTaskBoard(taskBoard3);
+        storyPanel3.setTitle("Stories");
+        storyPanel3.setPosition(1);
 
         storyPanel3 = storyPanelGateway.insertStoryPanel(storyPanel3);
 
         StoryPanel storyPanel4 = new StoryPanel();
         storyPanel4.setPanelType(PanelType.STORY_PANEL);
         storyPanel4.setTaskBoard(taskBoard4);
+        storyPanel4.setTitle("Stories");
+        storyPanel4.setPosition(1);
 
         storyPanel4 = storyPanelGateway.insertStoryPanel(storyPanel4);
 
@@ -270,6 +279,58 @@ public class DatabaseDummyData {
         taskBoardGateway.updateTaskBoard(taskBoard1);
 
         TaskPanel taskPanel21 = new TaskPanel();
-//        taskPanel21.setPanelType(Pen);
+        taskPanel21.setPanelType(PanelType.TASK_PANEL);
+        taskPanel21.setTitle("Backlog");
+        taskPanel21.setPosition(2);
+        taskPanel21.setTaskBoard(taskBoard2);
+
+        TaskPanel taskPanel22 = new TaskPanel();
+        taskPanel22.setPanelType(PanelType.TASK_PANEL);
+        taskPanel22.setTitle("In progress");
+        taskPanel22.setPosition(3);
+        taskPanel22.setTaskBoard(taskBoard2);
+
+        TaskPanel taskPanel23 = new TaskPanel();
+        taskPanel23.setPanelType(PanelType.TASK_PANEL);
+        taskPanel23.setTitle("Done");
+        taskPanel23.setPosition(4);
+        taskPanel23.setTaskBoard(taskBoard2);
+
+        taskPanel21 = taskPanelGateway.insertTaskPanel(taskPanel21);
+        taskPanel22 = taskPanelGateway.insertTaskPanel(taskPanel22);
+        taskPanel23 = taskPanelGateway.insertTaskPanel(taskPanel23);
+
+        TaskCard taskCard21 = new TaskCard();
+        taskCard21.setTitle("Backlog taskcard");
+        taskCard21.setCardType(CardType.TASK_CARD);
+        taskCard21.setDescription("Default description");
+        taskCard21.setFinishEstimation(new Timestamp(123123));
+        taskCard21.setTaskPanel(taskPanel21);
+        taskCard21.setPanel(taskPanel21);
+        taskCard21.setState("In backlog");
+        taskCard21 = taskCardGateway.insertTaskCard(taskCard21);
+
+        TaskCard taskCard22 = new TaskCard();
+        taskCard22.setTitle("In progress taskcard");
+        taskCard22.setCardType(CardType.TASK_CARD);
+        taskCard22.setDescription("Default description");
+        taskCard22.setFinishEstimation(new Timestamp(123123));
+        taskCard22.setTaskPanel(taskPanel22);
+        taskCard22.setPanel(taskPanel22);
+        taskCard22.setState("In progress");
+        taskCard22 = taskCardGateway.insertTaskCard(taskCard22);
+
+        TaskCard taskCard23 = new TaskCard();
+        taskCard23.setTitle("Done taskcard");
+        taskCard23.setCardType(CardType.TASK_CARD);
+        taskCard23.setDescription("Default description");
+        taskCard23.setFinishEstimation(new Timestamp(123123));
+        taskCard23.setTaskPanel(taskPanel23);
+        taskCard23.setPanel(taskPanel23);
+        taskCard23.setState("Done");
+        taskCard23 = taskCardGateway.insertTaskCard(taskCard23);
+
+        TaskCard test = taskCardGateway.getTaskCard(2);
+        int a = 0;
     }
 }

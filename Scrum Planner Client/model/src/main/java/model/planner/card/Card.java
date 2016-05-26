@@ -40,7 +40,6 @@ public class Card {
     @Enumerated(EnumType.STRING)
     private CardType cardType;
 
-    @JsonIgnore
     @ManyToOne
     private Panel panel;
 

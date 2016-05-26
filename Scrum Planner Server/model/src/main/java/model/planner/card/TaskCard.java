@@ -24,7 +24,6 @@ public class TaskCard extends Card {
     private String state;
     private Timestamp finishEstimation;
 
-    @JsonIgnore
     @ManyToOne
     private TaskPanel taskPanel;
 
