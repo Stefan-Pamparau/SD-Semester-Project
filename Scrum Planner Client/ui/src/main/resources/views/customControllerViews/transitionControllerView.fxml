@@ -1,0 +1,6 @@
+<?import javafx.scene.control.MenuItem?>
+
+<fx:root type="javafx.scene.control.Menu" xmlns:fx="http://javafx.com/fxml">
+    <MenuItem fx:id="getTaskPanel" text="%transitionController.goToLogin" onAction="#handleGoToLogin"/>
+    <MenuItem fx:id="addTaskPanel" text="%transitionController.goToProjects" onAction="#handleGoToProjects"/>
+</fx:root>
