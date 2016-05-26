@@ -1,5 +1,7 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -22,6 +24,7 @@ public class TaskCard extends Card {
     private String state;
     private Timestamp finishEstimation;
 
+    @JsonIgnore
     @ManyToOne
     private TaskPanel taskPanel;
 

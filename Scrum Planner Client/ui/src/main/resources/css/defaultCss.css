@@ -8,30 +8,30 @@
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.8;
 }
 
 .project-label {
     -fx-font-size: 18pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-background-color: blue;
-    -fx-border-color: white;
+    /*-fx-background-color: darkgray;*/
+    -fx-border-color: slategray;
     -fx-text-fill: white;
     -fx-border-radius: 10 10 10 10;
 }
 
 /*.label-bright {*/
-    /*-fx-font-size: 11pt;*/
-    /*-fx-font-family: "Segoe UI Semibold";*/
-    /*-fx-text-fill: white;*/
-    /*-fx-opacity: 1;*/
+/*-fx-font-size: 11pt;*/
+/*-fx-font-family: "Segoe UI Semibold";*/
+/*-fx-text-fill: white;*/
+/*-fx-opacity: 1;*/
 /*}*/
 
 /*.label-header {*/
-    /*-fx-font-size: 32pt;*/
-    /*-fx-font-family: "Segoe UI Light";*/
-    /*-fx-text-fill: white;*/
-    /*-fx-opacity: 1;*/
+/*-fx-font-size: 32pt;*/
+/*-fx-font-family: "Segoe UI Light";*/
+/*-fx-text-fill: white;*/
+/*-fx-opacity: 1;*/
 /*}*/
 
 .split-pane:horizontal > .split-pane-divider {

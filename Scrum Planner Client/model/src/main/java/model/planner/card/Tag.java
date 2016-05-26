@@ -1,5 +1,7 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class Tag {
     private Integer id;
     private String description;
 
+    @JsonIgnore
     @ManyToOne
     private TaskCard taskCard;
 

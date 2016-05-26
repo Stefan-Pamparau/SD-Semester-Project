@@ -1,5 +1,7 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -38,6 +40,7 @@ public class Card {
     @Enumerated(EnumType.STRING)
     private CardType cardType;
 
+    @JsonIgnore
     @ManyToOne
     private Panel panel;
 

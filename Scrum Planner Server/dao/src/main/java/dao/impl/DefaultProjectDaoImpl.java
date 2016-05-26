@@ -51,7 +51,7 @@ public class DefaultProjectDaoImpl implements ProjectDao {
             if (persistentProject != null) {
                 persistentProject.setName(project.getName());
                 persistentProject.setPermissionType(project.getPermissionType());
-                persistentProject.setUsers(project.getUsers());
+//                persistentProject.setUsers(project.getUsers());
                 session.update(persistentProject);
                 session.flush();
             }

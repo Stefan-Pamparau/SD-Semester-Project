@@ -50,11 +50,11 @@ public class DefaultTaskCardDaoImpl implements TaskCardDao {
             if (persistentTaskCard != null) {
                 persistentTaskCard.setTitle(taskCard.getTitle());
                 persistentTaskCard.setDescription(taskCard.getDescription());
-                persistentTaskCard.setPanel(taskCard.getPanel());
+//                persistentTaskCard.setPanel(taskCard.getPanel());
                 persistentTaskCard.setFinishEstimation(taskCard.getFinishEstimation());
                 persistentTaskCard.setState(taskCard.getState());
                 persistentTaskCard.setTags(taskCard.getTags());
-                persistentTaskCard.setTaskPanel(taskCard.getTaskPanel());
+//                persistentTaskCard.setTaskPanel(taskCard.getTaskPanel());
                 session.update(persistentTaskCard);
             }
         } catch (HibernateException e) {

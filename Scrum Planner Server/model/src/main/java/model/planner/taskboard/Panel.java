@@ -1,5 +1,7 @@
 package model.planner.taskboard;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -33,6 +35,7 @@ public class Panel {
     @Column(name = "panel_type", insertable = false, updatable = false)
     private PanelType panelType;
 
+    @JsonIgnore
     @ManyToOne
     private TaskBoard taskBoard;
 

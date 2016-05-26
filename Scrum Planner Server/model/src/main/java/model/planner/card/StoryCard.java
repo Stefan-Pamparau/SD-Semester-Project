@@ -1,5 +1,7 @@
 package model.planner.card;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import model.planner.taskboard.StoryPanel;
 public class StoryCard extends Card {
     private Integer storyPoints;
 
+    @JsonIgnore
     @ManyToOne
     private StoryPanel storyPanel;
 

@@ -48,7 +48,7 @@ public class DefaultTagDaoImpl implements TagDao {
 
             if (persistentTag != null) {
                 persistentTag.setDescription(tag.getDescription());
-                persistentTag.setTaskCard(tag.getTaskCard());
+//                persistentTag.setTaskCard(tag.getTaskCard());
                 session.update(tag);
                 session.flush();
             }
