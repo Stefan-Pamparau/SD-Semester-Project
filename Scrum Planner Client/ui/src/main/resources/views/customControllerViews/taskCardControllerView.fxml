@@ -1,0 +1,8 @@
+<?import javafx.scene.control.MenuItem?>
+
+<fx:root type="javafx.scene.control.Menu" xmlns:fx="http://javafx.com/fxml">
+    <MenuItem fx:id="getTaskCard" text="%taskCardController.getTaskCard" onAction="#handleGetTaskCardAction"/>
+    <MenuItem fx:id="addTaskCard" text="%taskCardController.addTaskCard" onAction="#handleAddTaskCardAction"/>
+    <MenuItem fx:id="updateTaskCard" text="%taskCardController.updateTaskCard" onAction="#handleUpdateTaskCardAction"/>
+    <MenuItem fx:id="deleteTaskCard" text="%taskCardController.deleteTaskCard" onAction="#handleDeleteTaskCardAction"/>
+</fx:root>

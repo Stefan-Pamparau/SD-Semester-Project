@@ -1,0 +1,8 @@
+<?import javafx.scene.control.MenuItem?>
+
+<fx:root type="javafx.scene.control.Menu" xmlns:fx="http://javafx.com/fxml">
+    <MenuItem fx:id="getCompany" text="%companyController.getCompany" onAction="#handleGetCompanyAction"/>
+    <MenuItem fx:id="addCompany" text="%companyController.addCompany" onAction="#handleAddCompanyAction"/>
+    <MenuItem fx:id="updateCompany" text="%companyController.updateCompany" onAction="#handleUpdateCompanyAction"/>
+    <MenuItem fx:id="deleteCompany" text="%companyController.deleteCompany" onAction="#handleDeleteCompanyAction"/>
+</fx:root>

@@ -1,0 +1,8 @@
+<?import javafx.scene.control.MenuItem?>
+
+<fx:root type="javafx.scene.control.Menu" xmlns:fx="http://javafx.com/fxml">
+    <MenuItem fx:id="getProjectManager" text="%projectManagerController.getProjectManager" onAction="#handleGetProjectManagerAction"/>
+    <MenuItem fx:id="addProjectManager" text="%projectManagerController.addProjectManager" onAction="#handleAddProjectManagerAction"/>
+    <MenuItem fx:id="updateProjectManager" text="%projectManagerController.updateProjectManager" onAction="#handleUpdateProjectManagerAction"/>
+    <MenuItem fx:id="deleteProjectManager" text="%projectManagerController.deleteProjectManager" onAction="#handleDeleteProjectManagerAction"/>
+</fx:root>

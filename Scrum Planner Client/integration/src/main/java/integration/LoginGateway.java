@@ -8,7 +8,7 @@ import model.planner.user.User;
  *
  * @author Stefan Pamparau
  */
-public interface UserGateway {
+public interface LoginGateway {
     /**
      * Returns an user based on his email and password
      *
@@ -18,4 +18,9 @@ public interface UserGateway {
      * @throws IntegrationException - thrown when a Server exception occurs
      */
     User getUserByEmailAndPassword(String email, String password) throws IntegrationException;
+
+    /**
+     * @return - returns the currently logged user
+     */
+    User getCurrentlyLoggedUser();
 }

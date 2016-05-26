@@ -10,6 +10,7 @@ import java.util.Set;
 import integration.CompanyGateway;
 import integration.DeveloperGateway;
 import integration.EmployeeGateway;
+import integration.LoginGateway;
 import integration.ProjectGateway;
 import integration.ProjectManagerGateway;
 import integration.RegularUserGateway;
@@ -18,7 +19,6 @@ import integration.TagGateway;
 import integration.TaskBoardGateway;
 import integration.TaskCardGateway;
 import integration.TaskPanelGateway;
-import integration.UserGateway;
 import integration.contextConfig.IntegrationContextConfig;
 import integration.exception.IntegrationException;
 import model.planner.project.PermissionType;
@@ -51,7 +51,7 @@ public class DatabaseDummyData {
         TaskBoardGateway taskBoardGateway = (TaskBoardGateway) applicationContext.getBean("taskBoardGateway");
         TaskCardGateway taskCardGateway = (TaskCardGateway) applicationContext.getBean("taskCardGateway");
         TaskPanelGateway taskPanelGateway = (TaskPanelGateway) applicationContext.getBean("taskPanelGateway");
-        UserGateway userGateway = (UserGateway) applicationContext.getBean("userGateway");
+        LoginGateway loginGateway = (LoginGateway) applicationContext.getBean("loginGateway");
 
         Company company1 = new Company();
         company1.setName("Company 1");

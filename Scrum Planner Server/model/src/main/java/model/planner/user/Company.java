@@ -1,5 +1,7 @@
 package model.planner.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -26,6 +28,7 @@ public class Company {
     private String name;
     private Timestamp creationDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private Set<Employee> employees;
 

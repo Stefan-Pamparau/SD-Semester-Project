@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import integration.CompanyGateway;
 import integration.DeveloperGateway;
 import integration.EmployeeGateway;
+import integration.LoginGateway;
 import integration.ProjectGateway;
 import integration.ProjectManagerGateway;
 import integration.RegularUserGateway;
@@ -14,10 +15,10 @@ import integration.TagGateway;
 import integration.TaskBoardGateway;
 import integration.TaskCardGateway;
 import integration.TaskPanelGateway;
-import integration.UserGateway;
 import integration.impl.DefaultCompanyGatewayImpl;
 import integration.impl.DefaultDeveloperGatewayImpl;
 import integration.impl.DefaultEmployeeGatewayImpl;
+import integration.impl.DefaultLoginGatewayImpl;
 import integration.impl.DefaultProjectGatewayImpl;
 import integration.impl.DefaultProjectManagerGatewayImpl;
 import integration.impl.DefaultRegularUserGatewayImpl;
@@ -26,7 +27,6 @@ import integration.impl.DefaultTagGatewayImpl;
 import integration.impl.DefaultTaskBoardGatewayImpl;
 import integration.impl.DefaultTaskCardGatewayImpl;
 import integration.impl.DefaultTaskPanelGatewayImpl;
-import integration.impl.DefaultUserGatewayImpl;
 
 /**
  * Spring context config for integration module.
@@ -91,8 +91,8 @@ public class IntegrationContextConfig {
         return new DefaultTaskPanelGatewayImpl();
     }
 
-    @Bean(name = "userGateway")
-    public UserGateway getUserGateway() {
-        return new DefaultUserGatewayImpl();
+    @Bean(name = "loginGateway")
+    public LoginGateway getUserGateway() {
+        return new DefaultLoginGatewayImpl();
     }
 }

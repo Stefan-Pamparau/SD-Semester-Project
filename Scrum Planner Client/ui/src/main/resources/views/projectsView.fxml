@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:id="root"
+          fx:controller="ui.controllers.LoginController"
+          alignment="center" hgap="10.0" vgap="10.0">
+
+</GridPane>
