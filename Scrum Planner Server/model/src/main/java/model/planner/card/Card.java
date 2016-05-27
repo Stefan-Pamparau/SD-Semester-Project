@@ -74,4 +74,28 @@ public class Card {
     public void setCardType(CardType cardType) {
         this.cardType = cardType;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        if (id != null ? !id.equals(card.id) : card.id != null) return false;
+        if (title != null ? !title.equals(card.title) : card.title != null) return false;
+        if (description != null ? !description.equals(card.description) : card.description != null)
+            return false;
+        return cardType == card.cardType;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (cardType != null ? cardType.hashCode() : 0);
+        return result;
+    }
 }

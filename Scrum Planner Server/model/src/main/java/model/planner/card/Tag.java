@@ -51,4 +51,23 @@ public class Tag {
     public void setTaskCard(TaskCard taskCard) {
         this.taskCard = taskCard;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tag tag = (Tag) o;
+
+        if (id != null ? !id.equals(tag.id) : tag.id != null) return false;
+        return description != null ? description.equals(tag.description) : tag.description == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 }

@@ -32,7 +32,7 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "panel_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("SIMPLE_PANEL")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@panelId")
-public class Panel implements Comparable {
+public class Panel implements Comparable<Panel> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -89,7 +89,31 @@ public class Panel implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return this.position.compareTo(position);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Panel panel = (Panel) o;
+
+        if (id != null ? !id.equals(panel.id) : panel.id != null) return false;
+        if (title != null ? !title.equals(panel.title) : panel.title != null) return false;
+        if (position != null ? !position.equals(panel.position) : panel.position != null)
+            return false;
+        return panelType == panel.panelType;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + (panelType != null ? panelType.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public int compareTo(Panel o) {
+        return this.position.compareTo(o.position);
     }
 }

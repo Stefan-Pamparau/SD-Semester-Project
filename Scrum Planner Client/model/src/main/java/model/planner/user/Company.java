@@ -73,4 +73,28 @@ public class Company {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Company company = (Company) o;
+
+        if (id != null ? !id.equals(company.id) : company.id != null) return false;
+        if (registrationNumber != null ? !registrationNumber.equals(company.registrationNumber) : company.registrationNumber != null)
+            return false;
+        if (name != null ? !name.equals(company.name) : company.name != null) return false;
+        return creationDate != null ? creationDate.equals(company.creationDate) : company.creationDate == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (registrationNumber != null ? registrationNumber.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        return result;
+    }
 }
