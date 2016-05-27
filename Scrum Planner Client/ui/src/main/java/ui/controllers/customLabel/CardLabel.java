@@ -98,22 +98,28 @@ public class CardLabel extends Label {
                         for (StoryCard storyCard : storyPanel.getStoryCards()) {
                             if (storyCard.getId().equals(card.getId())) {
                                 InformationDialogUtils.displayInformationDialog("Cannot move story card", "Cannot move story card", "Cannot move story card");
+                                break;
                             }
                         }
                     }
 
                     if (panel.getPanelType() == PanelType.TASK_PANEL) {
                         TaskPanel taskPanel = taskPanelGateway.getTaskPanel(panel.getId());
-
                         for (TaskCard taskCard : taskPanel.getTaskCards()) {
                             if (taskCard.getId().equals(card.getId())) {
-                                TaskPanel previous = taskPanelGateway.getTaskPanel(sortedPanels.get(currentPosition - 1).getId());
-                                taskCard.setTaskPanel(taskPanel);
-                                taskCardGateway.updateTaskCard(taskCard);
+                                if (currentPosition > 1) {
+                                    TaskPanel previous = taskPanelGateway.getTaskPanel(sortedPanels.get(currentPosition - 1).getId());
+                                    taskCard.setTaskPanel(previous);
+                                    taskCardGateway.updateTaskCard(taskCard);
+                                    panels.get(currentPosition).getChildren().remove(this);
+                                    panels.get(currentPosition - 1).getChildren().add(this);
+                                    break;
+                                } else {
+                                    InformationDialogUtils.displayInformationDialog("Cannot move task card", "Cannot move task card", "Cannot move task card");
+                                }
                             }
                         }
                     }
-
                     currentPosition++;
                 }
             } catch (IntegrationException e) {
@@ -124,7 +130,51 @@ public class CardLabel extends Label {
 
     private void addMoveRightHandler(MenuItem moveRight) {
         moveRight.setOnAction((ActionEvent event) -> {
+            try {
+                List<Panel> sortedPanels = new ArrayList<>();
+                sortedPanels.addAll(project.getTaskBoard().getPanels());
+                Collections.sort(sortedPanels);
+                int currentPosition = 0;
 
+                boolean found = false;
+                for (Panel panel : sortedPanels) {
+                    if(found == false) {
+                        if (panel.getPanelType() == PanelType.STORY_PANEL) {
+                            StoryPanel storyPanel = storyPanelGateway.getStoryPanel(panel.getId());
+                            for (StoryCard storyCard : storyPanel.getStoryCards()) {
+                                if (storyCard.getId().equals(card.getId())) {
+                                    InformationDialogUtils.displayInformationDialog("Cannot move story card", "Cannot move story card", "Cannot move story card");
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (panel.getPanelType() == PanelType.TASK_PANEL) {
+                            TaskPanel taskPanel = taskPanelGateway.getTaskPanel(panel.getId());
+                            for (TaskCard taskCard : taskPanel.getTaskCards()) {
+                                if (taskCard.getId().equals(card.getId())) {
+                                    if (currentPosition > 0 && currentPosition < sortedPanels.size() - 1) {
+                                        TaskPanel next = taskPanelGateway.getTaskPanel(sortedPanels.get(currentPosition + 1).getId());
+                                        taskCard.setTaskPanel(next);
+                                        taskCardGateway.updateTaskCard(taskCard);
+                                        panels.get(currentPosition).getChildren().remove(this);
+                                        panels.get(currentPosition + 1).getChildren().add(this);
+                                        found = true;
+                                        break;
+                                    } else {
+                                        System.out.println(currentPosition);
+                                        InformationDialogUtils.displayInformationDialog("Cannot move task card", "Cannot move task card", "Cannot move task card");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    currentPosition++;
+                }
+            } catch (IntegrationException e) {
+                e.printStackTrace();
+            }
         });
     }
 
