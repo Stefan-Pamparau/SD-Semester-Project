@@ -40,6 +40,7 @@ public class TaskBoardView implements Initializable {
     @FXML
     private GridPane root;
 
+    private static TaskBoardView instance;
     private Project project;
 
     private StoryPanelGateway storyPanelGateway;
@@ -47,6 +48,7 @@ public class TaskBoardView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
         initializeOptionsMenuBar();
         storyPanelGateway = (StoryPanelGateway) ClientBoot.getApplicationContext().getBean("storyPanelGateway");
         taskPanelGateway = (TaskPanelGateway) ClientBoot.getApplicationContext().getBean("taskPanelGateway");
@@ -126,5 +128,13 @@ public class TaskBoardView implements Initializable {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public static TaskBoardView getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(TaskBoardView instance) {
+        TaskBoardView.instance = instance;
     }
 }
